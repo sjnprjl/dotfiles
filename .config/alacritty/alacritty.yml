@@ -10,7 +10,7 @@ window:
 scrolling:
   history: 10000
   multiplier: 3
-background_opacity: .9
+background_opacity: .8
 dynamic_title: true
 
 # Font Customization
@@ -39,7 +39,8 @@ draw_bold_text_with_bright_colors: true
 # Color Settings (Gruvbox)
 colors:
   primary:
-    background: '#1d2021'
+    background: '#0d1918'
+    #    background: '#1d2021'
     foreground: '#ebdbb2'
 
   normal:
@@ -72,9 +73,4 @@ cursor:
 
 key_bindings:
   - { key: N, mods: Control, action: SpawnNewInstance }
-
-#||\\ //||
-#|| \// || Mackenzie Criswell
-#|| //\ || https://makc.co
-#||   \\|| https://github.com/makccr
 
