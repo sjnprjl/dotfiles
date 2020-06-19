@@ -102,7 +102,8 @@ local scrlocker    = "slock"
 local color = {
     "#ff0000",
     "#d31145",
-    "#3c2918"
+    "#3c2918",
+    "#20639b"
 };
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5" }
@@ -125,7 +126,7 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.se,
     -- lain.layout.cascade,
     -- lain.layout.cascade.tile,
-    -- lain.layout.centerwork,
+    -- lain.ayout.centerwork,
     -- lain.layout.centerwork.horizontal,
     -- lain.layout.termfair,
     -- lain.layout.termfair.center,
@@ -787,8 +788,8 @@ end)
 --    c:emit_signal("request::activate", "mouse_enter", {raise = vi_focus})
 --end)
 
---client.connect_signal("focus", function(c) c.border_color = color[2]  end)
---client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("focus", function(c) c.border_color = color[4]  end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 -- possible workaround for tag preservation when switching back to default screen:
 -- https://github.com/lcpz/awesome-copycats/issues/251
@@ -797,4 +798,4 @@ end)
 beautiful.useless_gap = 5 
 
 --Autorun
---awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
+awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
