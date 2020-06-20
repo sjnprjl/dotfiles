@@ -27,8 +27,8 @@ alert = #bd2c40
 
 [bar/topbar]
 width = 50%
-height = 30
-radius = 1.0
+height = 20
+;radius = 5
 ;fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
