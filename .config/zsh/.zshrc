@@ -30,6 +30,7 @@ source ~/.config/zsh/.zprofile
  alias htdocs='cd /opt/lampp/htdocs'
  alias sn='shutdown now'
  alias vol='~/.bin/speaker-volume' 
+ alias clock='tty-clock -c -s'
  # Git Prompt Settings
  autoload -Uz vcs_info
  precmd_vcs_info() { vcs_info }
