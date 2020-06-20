@@ -12,7 +12,7 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-
+syntax enable
 set colorcolumn=80
 highlight ColorColoumn ctermbg=0  guibg=lightgrey
 call plug#begin('~/.vim/plugged')
@@ -50,13 +50,12 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+""nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>ps :Rg<SPACE>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 nnoremap <silent> <Leader>gd :YcmCompleter GoTO<CR>
 nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
-
 
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-k> :tabnext<CR>
@@ -66,3 +65,5 @@ inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap { {}<left>
 inoremap [ []<left>
+
+map <leader>pv :NERDTreeToggle<CR>
