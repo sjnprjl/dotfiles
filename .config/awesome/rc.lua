@@ -103,7 +103,8 @@ local color = {
     "#ff0000",
     "#d31145",
     "#3c2918",
-    "#20639b"
+    "#20639b",
+    "#191a1b"
 };
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5" }
@@ -529,13 +530,13 @@ globalkeys = my_table.join(
 
 
     -- Volume adjustment
-    awful.key({} , "XF86AudioRaiseVolume" , function () 
-        awful.util.spawn("amixer set Master 2%+ ") end),
-    awful.key({} , "XF86AudioLowerVolume" , function()
-        awful.util.spawn("amixer set Master 2%- ") end),
-
-    awful.key({} , "XF86AudioMute" , function()
-        awful.util.spawn("amixer sset Master toggle") end),
+--    awful.key({} , "XF86AudioRaiseVolume" , function () 
+--        awful.util.spawn("amixer set Master 2%+ ") end),
+--    awful.key({} , "XF86AudioLowerVolume" , function()
+--        awful.util.spawn("amixer set Master 2%- ") end),
+--
+--    awful.key({} , "XF86AudioMute" , function()
+--        awful.util.spawn("amixer sset Master toggle") end),
     
 
     -- Default
@@ -724,8 +725,9 @@ client.connect_signal("manage", function (c)
     -- if not awesome.startup then awful.client.setslave(c) end
 
 --    c.shape = gears.shape.rounded_rect
+--    border
     c.shape = function(cr , w , h)
-        gears.shape.rounded_rect(cr , w , h , 12)
+        gears.shape.rounded_rect(cr , w , h , 8)
     end
     if awesome.startup and
       not c.size_hints.user_position
@@ -788,14 +790,14 @@ end)
 --    c:emit_signal("request::activate", "mouse_enter", {raise = vi_focus})
 --end)
 
-client.connect_signal("focus", function(c) c.border_color = color[4]  end)
+client.connect_signal("focus", function(c) c.border_color = color[5]  end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 -- possible workaround for tag preservation when switching back to default screen:
 -- https://github.com/lcpz/awesome-copycats/issues/251
 -- }}}
 -- Gaps
-beautiful.useless_gap = 5 
+beautiful.useless_gap = 10 
 
 --Autorun
-awful.spawn.with_shell("picom --config ~/.config/picom/picom.conf")
+awful.spawn.with_shell("picom")

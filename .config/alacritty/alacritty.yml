@@ -4,13 +4,13 @@ window:
     columns: 140
     lines: 38
   padding:
-    x: 10
-    y: 10
+    x: 5
+    y: 5
   decorations: none
 scrolling:
   history: 10000
   multiplier: 3
-background_opacity: .8
+background_opacity: .95
 dynamic_title: true
 
 # Font Customization
@@ -24,7 +24,7 @@ font:
   italic:
     family: Fira Code
     style: Italic
-  size: 8
+  size: 7
   offset:
     x: 0
     y: 0
@@ -39,8 +39,9 @@ draw_bold_text_with_bright_colors: true
 # Color Settings (Gruvbox)
 colors:
   primary:
-    background: '#0d1918'
+    #background: '#0d1918'
     #    background: '#1d2021'
+    background: '#191a1b'
     foreground: '#ebdbb2'
 
   normal:
