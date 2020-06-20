@@ -1,4 +1,5 @@
 set encoding=utf-8
+set wrap 
 set noerrorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4

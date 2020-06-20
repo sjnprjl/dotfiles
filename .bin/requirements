@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo pacman -S --needed  dunst feh picom vim firefox-developer-edition
+sudo pacman -S --needed  dunst feh picom vim firefox-developer-edition mpd mpc ncmpcpp

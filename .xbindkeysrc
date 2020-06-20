@@ -57,7 +57,11 @@
   XF86AudioLowerVolume
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   XF86AudioMute
+
+#increase brightness
+#Increase backlight
 #"xterm -geom 50x20+20+20"
+
 
 #   Shift+Mod2+alt + s
 #
