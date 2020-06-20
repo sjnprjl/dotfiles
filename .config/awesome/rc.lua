@@ -29,9 +29,13 @@ require("collision")()
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
+    naughty.notification { 
+        preset = naughty.config.presets.critical,
+        title = "Oops, there were errors during startup!",
+        message = awesome.startup_errors, 
+        timeout = 4
+ }
+
 end
 
 -- Handle runtime errors after startup
@@ -716,7 +720,6 @@ awful.rules.rules = {
           properties = { maximized = true } },
 }
 -- }}}
-
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
@@ -726,8 +729,16 @@ client.connect_signal("manage", function (c)
 
 --    c.shape = gears.shape.rounded_rect
 --    border
-    c.shape = function(cr , w , h)
-        gears.shape.rounded_rect(cr , w , h , 8)
+
+    naughty.notification {
+
+        message = c.type .. " " ..  c.name
+
+    };
+    if c.type ~= "dock" then
+        c.shape = function(cr , w , h)
+            gears.shape.rounded_rect(cr , w , h , 8)
+        end
     end
     if awesome.startup and
       not c.size_hints.user_position
