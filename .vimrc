@@ -24,13 +24,14 @@ Plug 'leafgarland/typescript-vim'
 Plug 'vim-utils/vim-man'
 Plug 'lyuts/vim-rtags'
 Plug 'valloric/youcompleteme'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/promptline.vim'
+Plug 'junegunn/fzf', {'do': { -> fzf#install()}}
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 colorscheme dracula
@@ -44,7 +45,6 @@ let g:netrw_browse_split=2
 let g:netrw_win_size = 25
 let g:netrw_banner=0
 
-let g:ctrlp_use_caching = 0
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -68,3 +68,11 @@ inoremap { {}<left>
 inoremap [ []<left>
 
 map <leader>pv :NERDTreeToggle<CR>
+" Fzf
+nnoremap <leader><leader> :GFiles<CR>
+nnoremap <leader>fi       :Files<CR>
+nnoremap <leader>C        :Colors<CR>
+nnoremap <leader><CR>     :Buffers<CR>
+nnoremap <leader>fl       :Lines<CR>
+nnoremap <leader>ag       :Ag! <C-R><C-W><CR>
+nnoremap <leader>m        :History<CR>
