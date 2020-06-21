@@ -4,18 +4,20 @@
      github.com/lcpz
 
 --]]
-
 local gears = require("gears")
+
+
 local lain  = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
 local dpi   = require("beautiful.xresources").apply_dpi
-
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
+ -- useless [[but don't know how to get rid of it']]
 theme.confdir                                   = os.getenv("HOME") .. "/.config/awesome/themes/multicolor"
+
 theme.wallpaper                                 = theme.confdir .. "/wallpaper.jpg"
 theme.font                                      = "Terminus 8"
 theme.menu_bg_normal                            = "#000000"
@@ -327,20 +329,17 @@ function theme.at_screen_connect(s)
     }
 
     -- Create the bottom wibox
-    s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(20), bg = theme.bg_normal, fg = theme.fg_normal })
-
-    -- Add widgets to the bottom wibox
-    s.mybottomwibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-        },
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            s.mylayoutbox,
-        },
-    }
+--    s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(20), bg = theme.bg_normal, fg = theme.fg_normal })
+--
+--    -- Add widgets to the bottom wibox
+--    s.mybottomwibox:setup {
+--        layout = wibox.layout.align.horizontal,
+--        { -- Left widgets
+--            layout = wibox.layout.fixed.horizontal,
+--        },
+--        s.mytasklist, -- Middle widget
+--        nil,
+--    }
 end
 
 return theme
