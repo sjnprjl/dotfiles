@@ -812,4 +812,4 @@ beautiful.useless_gap = 10
 
 --Autorun
 awful.spawn.with_shell("picom")
-awful.spawn.with_shell("feh --bg-fill --randomize ~/Pictures/wallpapers")
+--awful.spawn.with_shell("feh --bg-fill --randomize ~/Pictures/wallpapers")
