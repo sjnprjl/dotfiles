@@ -462,7 +462,7 @@ end,
 {description = "volume down", group = "hotkeys"}),
 awful.key({ }, "XF86AudioMute",
 function ()
-    os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
+    os.execute(string.format("amixer -q set %s toggle; amixer -q set Speaker unmute", beautiful.volume.togglechannel or beautiful.volume.channel))
     beautiful.volume.update()
 end,
 {description = "toggle mute", group = "hotkeys"}),
@@ -596,7 +596,7 @@ function (c)
     c:raise()
 end,
 {description = "toggle fullscreen", group = "client"}),
-awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+awful.key({ modkey }, "BackSpace",      function (c) c:kill()                         end,
 {description = "close", group = "client"}),
 awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
 {description = "toggle floating", group = "client"}),
