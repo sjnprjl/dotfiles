@@ -32,9 +32,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/promptline.vim'
 Plug 'junegunn/fzf', {'do': { -> fzf#install()}}
 Plug 'junegunn/fzf.vim'
+"Plug 'flazz/vim-colorschemes'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 colorscheme dracula
+colorscheme gruvbox
 if executable('rg')
     let g:rg_drive_root='true'
 endif
@@ -63,6 +66,7 @@ nnoremap <C-k> :tabnext<CR>
 inoremap jk <ESC> 
 inoremap " ""<left>
 inoremap ' ''<left>
+inoremap ` ``<left>
 inoremap ( ()<left>
 inoremap { {}<left>
 inoremap [ []<left>
@@ -76,3 +80,20 @@ nnoremap <leader><CR>     :Buffers<CR>
 nnoremap <leader>fl       :Lines<CR>
 nnoremap <leader>ag       :Ag! <C-R><C-W><CR>
 nnoremap <leader>m        :History<CR>
+
+
+" commenting stuff
+" <space>" for commenting on vim 
+nnoremap <leader>" :norm i"<ESC> xa
+
+" <space>- for commentng on lua
+nnoremap <leader>- :norm i--<CR>
+" <space>1 for commentng on lua
+nnoremap <leader>1 :norm i#<CR>
+
+
+
+
+
+
+
