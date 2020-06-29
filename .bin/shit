@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-#######################
-# COPY CONTENT OF FILE
-#######################
+# ----------------------------------------------------------+
+# Author:               sujan parajuli                      |
+# Description:          Copy content of file to clipboard   | 
+# Require:              xclip program                       |
+# ----------------------------------------------------------+
 if test -z "$1"
 then
     echo "Please specify some file"
