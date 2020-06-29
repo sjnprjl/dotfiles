@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+#######################
+# COPY CONTENT OF FILE
+#######################
+if test -z "$1"
+then
+    echo "Please specify some file"
+else
+    cat $1 | xclip -selection clipboard
+    echo "copied to clipboard from $1"
+fi
