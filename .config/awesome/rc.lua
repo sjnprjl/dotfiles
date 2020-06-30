@@ -25,6 +25,7 @@ local dpi           = require("beautiful.xresources").apply_dpi
 -- }}}
 -- REQUIRE COLLISION
 require("collision")()
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -400,6 +401,8 @@ awful.key({ modkey, "Control" }, "r", awesome.restart,
 {description = "reload awesome", group = "awesome"}),
 awful.key({ modkey, "Shift"   }, "q", awesome.quit,
 {description = "quit awesome", group = "awesome"}),
+awful.key({ modkey, "Shift"           }, "Return", function () awful.spawn("kitty") end,
+{description = "open kitty terminal", group = "launcher"}),
 
 awful.key({ altkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end,
 {description = "increase master width factor", group = "layout"}),
@@ -417,6 +420,13 @@ awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)      
 {description = "select next", group = "layout"}),
 awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
 {description = "select previous", group = "layout"}),
+-- resize clients vertically 
+awful.key({ altkey, "Shift"   }, "j",     function () awful.client.incwfact( 0.05)          end,
+{description = "decrease  master height factor", group = "layout"}),
+awful.key({ altkey, "Shift"   }, "k",     function () awful.client.incwfact(-0.05)          end,
+{description = "increase master height factor", group = "layout"}),
+
+
 
 awful.key({ modkey, "Control" }, "n",
 function ()
@@ -808,7 +818,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- https://github.com/lcpz/awesome-copycats/issues/251
 -- }}}
 -- Gaps
-beautiful.useless_gap = 10 
+beautiful.useless_gap = 8 
 
 --Autorun
 awful.spawn.with_shell("picom")
