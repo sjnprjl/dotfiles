@@ -32,6 +32,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/promptline.vim'
 Plug 'junegunn/fzf', {'do': { -> fzf#install()}}
 Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdcommenter'
 "Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 call plug#end()
@@ -82,19 +83,6 @@ nnoremap <leader>ag       :Ag! <C-R><C-W><CR>
 nnoremap <leader>m        :History<CR>
 
 
-" commenting stuff
-" <space>" for commenting on vim 
-nnoremap <leader>" :norm i"<ESC> xa
-
-" <space>- for commentng on lua
-nnoremap <leader>- :norm i--<CR>
-" <space>1 for commentng on lua
-nnoremap <leader>1 :norm i#<CR>
-
-
-
-
-
 " vim hardcodes background color erase even if the terminfo file does
 " not contain bce (not to mention that libvte based terminals
 " incorrectly contain bce in their terminfo files). This causes
@@ -102,3 +90,5 @@ nnoremap <leader>1 :norm i#<CR>
 " background color.
 
 let &t_ut=''
+
+
