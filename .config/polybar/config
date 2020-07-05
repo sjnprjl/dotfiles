@@ -15,51 +15,68 @@
 ;   The README contains a lot of information
 ;
 ;==========================================================
-;==============================
+
 [colors]
+;background = ${xrdb:color0:#222}
 background = #222
 background-alt = #444
+;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
-secondary = #e60053
+secondary = #fff
 alert = #bd2c40
 
-[bar/topbar]
-width = 50%
-height = 20
-;radius = 5
-;fixed-center = false
+[bar/bar]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 27
+ffset-x = 1%
+;offset-y = 1%
+;radius = 6.0
+fixed-center = false
+
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
 line-color = #f00
-offset-x = 20%
+
+;border-size = 4
+;border-color = #00000000
 
 padding-left = 0
 padding-right = 2
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 3
 
-font-0 = fixed:pixelsize=10;1
+font-0 = VT323:pixelsize=12;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
-modules-left = eastergg-pornhub
-modules-center = mpd
-modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+font-3 = fontawesome:fontformat=truetype:size=8:antialias=false;0
 
-;tray-position = right
-;tray-padding = 2
+modules-left =   
+modules-center = pulseaudio 
+modules-right = updates wlan packages battery powermenu  xbacklight
+
+tray-position = right
+tray-padding = 10
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
 cursor-click = pointer
 cursor-scroll = ns-resize
-;==============================
-;modules
-;==============================
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -77,6 +94,7 @@ label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
 
+
 [module/filesystem]
 type = internal/fs
 interval = 25
@@ -86,10 +104,6 @@ mount-0 = /
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
-
-; Separator in between workspaces
-; label-separator = |
-
 
 [module/mpd]
 type = internal/mpd
@@ -198,30 +212,24 @@ label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+label-volume =   %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
+label-muted =  muted
 label-muted-foreground = #666
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+bar-volume-width = 25
+bar-volume-foreground-0 = #000
 bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-indicator = 
 bar-volume-indicator-font = 2
-bar-volume-fill = ─
+bar-volume-indicator-foreground = #3b6978
+bar-volume-fill = 
 bar-volume-fill-font = 2
-bar-volume-empty = ─
+bar-volume-empty = 
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+bar-volume-empty-foreground = #fff
 
 [module/alsa]
 type = internal/alsa
@@ -245,9 +253,9 @@ bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
-bar-volume-fill = ─
+bar-volume-fill = |
 bar-volume-fill-font = 2
-bar-volume-empty = ─
+bar-volume-empty = |
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
@@ -263,7 +271,7 @@ format-charging-underline = #ffb52a
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
@@ -272,15 +280,17 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 
+animation-charging-1 =  
+animation-charging-2 =  
+animation-charging-3 =  
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
+animation-discharging-0 = 
+animation-discharging-1 =  
+animation-discharging-2 =  
+animation-discharging-3 =  
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
@@ -302,6 +312,48 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
+
+[module/updates]
+type=custom/script
+interval = 60
+tail = true
+exec= ~/.config/polybar/scripts/checkupdates | wc -l
+click-left = ~/.config/polybar/checkupdates
+format-prefix = " "
+
+format-suffix = " updates "
+format-prefix-padding = 1
+
+format-suffix-underline = ${colors.secondary}
+;format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = " %output% "
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/packages]
+type=custom/script
+interval = 600
+exec=pacman -Q | wc -l
+
+format-prefix = ""
+format-prefix-padding = 1
+format-underline = ${colors.secondary}
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
 
 [module/powermenu]
 type = custom/menu
@@ -325,35 +377,12 @@ menu-0-1-exec = menu-open-2
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = reboot
 
 menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec = shutdown now
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
-
-[module/pac-updates]
-type=custom/script
-exec=~/.config/polybar/polybar-scripts/pac-updates.sh
-interval=600
-[module/eastergg-pornhub]
-type = custom/script
-exec = echo " hub "
-interval = 3600
-click-left = "firefox --private-window https://pornhub.com/random" &
-
-format = <label>
-format-prefix = " Porn "
-format-prefix-foreground = #ffffff
-format-prefix-background = #000000
-
-format-overline = #000000
-format-underline = #000000
-format-foreground = #000000
-format-background = #ffa500
-format-suffix = " "
-format-suffix-background = #000000
-format-suffix-foreground = #000000
 
 [settings]
 screenchange-reload = true
@@ -368,4 +397,3 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
-

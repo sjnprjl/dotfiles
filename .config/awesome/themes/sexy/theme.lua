@@ -4,19 +4,19 @@
      github.com/lcpz
 
 --]]
+
 local gears = require("gears")
-
-
 local lain  = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
 local dpi   = require("beautiful.xresources").apply_dpi
+
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
 theme.confdir                                   = os.getenv("HOME") .. "/.config/awesome/themes/multicolor"
-theme.wallpaper                                 = "~/Pictures/wallpapers"
+theme.wallpaper                                 = theme.confdir .. "/wallpaper.jpg"
 theme.font                                      = "Terminus 8"
 theme.menu_bg_normal                            = "#000000"
 theme.menu_bg_focus                             = "#000000"
@@ -55,7 +55,9 @@ theme.widget_vol                                = theme.confdir .. "/icons/spkr.
 theme.taglist_squares_sel                       = theme.confdir .. "/icons/square_a.png"
 theme.taglist_squares_unsel                     = theme.confdir .. "/icons/square_b.png"
 theme.tasklist_plain_task_name                  = true
-theme.tasklist_disable_icon                     = true
+theme.tasklist_disable_icon                     = false
+theme.tasklist_align                            = "center"
+theme.tasklist_disable_task_name                = true
 theme.useless_gap                               = 0
 theme.layout_tile                               = theme.confdir .. "/icons/tile.png"
 theme.layout_tilegaps                           = theme.confdir .. "/icons/tilegaps.png"
@@ -255,14 +257,12 @@ function theme.at_screen_connect(s)
     -- Quake application
     s.quake = lain.util.quake({ app = awful.util.terminal })
 
--- get random wallpapers
-    local f = io.popen("sh -c \"find ".. theme.wallpaper ..  " -name '*' | shuf -n 1 | xargs echo -n\"")
-
-    local wallpaper = f:read("*all")
-    f:close()
-    for i = 1 , screen.count() do
-        gears.wallpaper.maximized(wallpaper , i , true)
+    -- If wallpaper is a function, call it with the screen
+    local wallpaper = theme.wallpaper
+    if type(wallpaper) == "function" then
+        wallpaper = wallpaper(s)
     end
+    gears.wallpaper.maximized(wallpaper, s, true)
 
     -- Tags
     awful.tag(awful.util.tagnames, s, awful.layout.layouts)
@@ -282,10 +282,43 @@ function theme.at_screen_connect(s)
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
+--    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
+
+s.mytasklist = awful.widget.tasklist {
+
+
+    screen      = s,
+    filter      = awful.widget.tasklist.filter.currenttags,
+    buttons     = tasklist_buttons,
+    style       = {
+
+        shape   = gears.shape.rounded_bar,
+
+    },
+
+    layout     = {
+        spacing         = 1,
+        spacing_width   = {
+        forced_width    = 5,
+        color           = "#ff0000",
+        shape           = gears.shape.circle,
+        widget          = wibox.widget.separater,
+        },
+
+        layout          = wibox.layout.flex.horizontal,
+    },
+
+
+
+
+
+
+
+}
+
 
     -- Create the wibox
-    --[[s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(19), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(19), bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -326,24 +359,33 @@ function theme.at_screen_connect(s)
             clockicon,
             mytextclock,
         },
-    }]]
+    }
 
     -- Create the bottom wibox
---    s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(20), bg = theme.bg_normal, fg = theme.fg_normal })
---
---    -- Add widgets to the bottom wibox
+    s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = dpi(20), bg = theme.bg_normal .. "55", fg = theme.fg_normal })
+
+    -- Add widgets to the bottom wibox
 --    s.mybottomwibox:setup {
 --        layout = wibox.layout.align.horizontal,
 --        { -- Left widgets
 --            layout = wibox.layout.fixed.horizontal,
 --        },
 --        s.mytasklist, -- Middle widget
---        nil,
+--        { -- Right widgets
+--            layout = wibox.layout.fixed.horizontal,
+--          --  s.mylayoutbox,
+--        },
 --    }
---s.leftbar = awful.wibar {position = 'left', width = dpi(40), bg = "#00000044"}
---s.leftbar:setup {
- --   layout = wibox.layout.align.vertical,
---}
+    s.mybottomwibox:setup {
+        layout = wibox.layout.align.vertical,
+        {
+            layout = wibox.layout.fixed.horizontal,
+
+        },
+       s.mytasklist
+
+
+    }
 end
 
 return theme

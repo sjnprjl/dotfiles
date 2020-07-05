@@ -35,6 +35,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter'
 "Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
+Plug 'mattn/emmet-vim'
+
 call plug#end()
 
 colorscheme dracula
@@ -92,3 +94,7 @@ nnoremap <leader>m        :History<CR>
 let &t_ut=''
 
 
+
+
+
+let g:user_emmet_leader_key = ','

@@ -16,7 +16,7 @@ dynamic_title: true
 # Font Customization
 font:
   normal:
-    family: Fira Code
+    family: "Fira Code"
     style: Regular
   bold:
     family: Fira Code

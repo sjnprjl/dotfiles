@@ -577,17 +577,6 @@ end,
 awful.key({ modkey }, "r", function ()  awful.util.spawn("dmenu_run") end,
 {description = "run prompt", group = "launcher"}),
 
-awful.key({ modkey }, "x",
-function ()
-    awful.prompt.run {
-        prompt       = "Run Lua code: ",
-        textbox      = awful.screen.focused().mypromptbox.widget,
-        exe_callback = awful.util.eval,
-        history_path = awful.util.get_cache_dir() .. "/history_eval"
-    }
-end,
-{description = "lua execute prompt", group = "awesome"}),
-
 -- Custom keybindings
 awful.key({ altkey }, "l",
 function ()
@@ -606,8 +595,8 @@ function (c)
     c:raise()
 end,
 {description = "toggle fullscreen", group = "client"}),
-awful.key({ modkey }, "BackSpace",      function (c) c:kill()                         end,
-{description = "close", group = "client"}),
+awful.key({ modkey }, "x",      function (c) c:kill()                         end,
+{description = "Close clients", group = "client"}),
 awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
 {description = "toggle floating", group = "client"}),
 awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
@@ -818,8 +807,9 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- https://github.com/lcpz/awesome-copycats/issues/251
 -- }}}
 -- Gaps
-beautiful.useless_gap = 8 
+beautiful.useless_gap = 7 
 
 --Autorun
 awful.spawn.with_shell("picom")
+awful.spawn.with_shell("~/.config/polybar/launch.sh")
 --awful.spawn.with_shell("feh --bg-fill --randomize ~/Pictures/wallpapers")

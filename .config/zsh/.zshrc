@@ -31,6 +31,7 @@ source ~/.config/zsh/.zprofile
  alias sn='shutdown now'
  alias vol='~/.bin/speaker-volume' 
  alias clock='tty-clock -c -s'
+ alias repo='cd ~/Repo/dotfiles'
  # Git Prompt Settings
  autoload -Uz vcs_info
  precmd_vcs_info() { vcs_info }
@@ -74,4 +75,13 @@ neofetch
 
 
 
+#Import colorscheme from 'wal' asynchronously
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+(cat ~/.cache/wal/sequences &)
 
+# Alternative (blocks terminal for 0-3ms)
+cat ~/.cache/wal/sequences
+
+# To add support for TTYs this line can be optionally added.
+source ~/.cache/wal/colors-tty.sh
