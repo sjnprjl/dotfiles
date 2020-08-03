@@ -1,0 +1,6 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="-1.5" y="-1.5" width="92" height="197" transform="matrix(0 -1 -1 0 197 197)" stroke="black" stroke-width="3"/>
+<rect x="-1.5" y="-1.5" width="92" height="60" transform="matrix(0 -1 -1 0 197 92)" stroke="black" stroke-width="3"/>
+<rect x="-1.5" y="-1.5" width="92" height="60" transform="matrix(0 -1 -1 0 129 92)" stroke="black" stroke-width="3"/>
+<rect x="-1.5" y="-1.5" width="92" height="60" transform="matrix(0 -1 -1 0 60 92)" stroke="black" stroke-width="3"/>
+</svg>
