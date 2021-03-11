@@ -1,7 +1,1 @@
-<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="2.5" y="197.5" width="55" height="125" transform="rotate(-90 2.5 197.5)" stroke="black" stroke-width="5"/>
-<rect x="2.5" y="128.5" width="55" height="125" transform="rotate(-90 2.5 128.5)" stroke="black" stroke-width="5"/>
-<rect x="2.5" y="60.5" width="55" height="125" transform="rotate(-90 2.5 60.5)" stroke="black" stroke-width="5"/>
-<rect x="142.5" y="197.5" width="85" height="55" transform="rotate(-90 142.5 197.5)" stroke="black" stroke-width="5"/>
-<rect x="142.5" y="90.5" width="85" height="55" transform="rotate(-90 142.5 90.5)" stroke="black" stroke-width="5"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="none" viewBox="0 0 200 200"><rect width="55" height="125" x="2.5" y="197.5" stroke="#000" stroke-width="5" transform="rotate(-90 2.5 197.5)"/><rect width="55" height="125" x="2.5" y="128.5" stroke="#000" stroke-width="5" transform="rotate(-90 2.5 128.5)"/><rect width="55" height="125" x="2.5" y="60.5" stroke="#000" stroke-width="5" transform="rotate(-90 2.5 60.5)"/><rect width="85" height="55" x="142.5" y="197.5" stroke="#000" stroke-width="5" transform="rotate(-90 142.5 197.5)"/><rect width="85" height="55" x="142.5" y="90.5" stroke="#000" stroke-width="5" transform="rotate(-90 142.5 90.5)"/></svg>

@@ -1,8 +1,1 @@
-<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="197.5" y="197.5" width="25" height="58" transform="rotate(180 197.5 197.5)" stroke="black" stroke-width="5"/>
-<rect x="197.5" y="128.5" width="25" height="58" transform="rotate(180 197.5 128.5)" stroke="black" stroke-width="5"/>
-<rect x="197.5" y="58.5" width="25" height="56" transform="rotate(180 197.5 58.5)" stroke="black" stroke-width="5"/>
-<path d="M74.5 2.5V27.5L2.50001 27.5V2.5L74.5 2.5Z" stroke="black" stroke-width="5"/>
-<path d="M157.5 2.5V27.5L85.5 27.5V2.5L157.5 2.5Z" stroke="black" stroke-width="5"/>
-<rect x="157.5" y="197.5" width="155" height="152" transform="rotate(180 157.5 197.5)" stroke="black" stroke-width="5"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="none" viewBox="0 0 200 200"><rect width="25" height="58" x="197.5" y="197.5" stroke="#000" stroke-width="5" transform="rotate(180 197.5 197.5)"/><rect width="25" height="58" x="197.5" y="128.5" stroke="#000" stroke-width="5" transform="rotate(180 197.5 128.5)"/><rect width="25" height="56" x="197.5" y="58.5" stroke="#000" stroke-width="5" transform="rotate(180 197.5 58.5)"/><path stroke="#000" stroke-width="5" d="M74.5 2.5V27.5L2.50001 27.5V2.5L74.5 2.5Z"/><path stroke="#000" stroke-width="5" d="M157.5 2.5V27.5L85.5 27.5V2.5L157.5 2.5Z"/><rect width="155" height="152" x="157.5" y="197.5" stroke="#000" stroke-width="5" transform="rotate(180 157.5 197.5)"/></svg>

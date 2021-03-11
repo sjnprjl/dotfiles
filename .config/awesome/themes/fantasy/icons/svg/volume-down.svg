@@ -1,6 +1,1 @@
-<svg width="59" height="66" viewBox="0 0 59 66" fill="none" xmlns="http://www.w3.org/2000/svg">
-:q
-<rect x="1.5" y="19.5" width="17" height="27" rx="3.5" stroke="white" stroke-width="3"/>
-<path d="M18 20.5L34.2567 2.437C34.8698 1.75578 36 2.18947 36 3.10596V62.894C36 63.8105 34.8698 64.2442 34.2567 63.563L18 45.5" stroke="white" stroke-width="3"/>
-<path d="M58 34H59V33H58V34ZM43 34V33H42V34H43ZM58 35V36H59V35H58ZM43 35H42V36H43V35ZM58 33H43V35H58V33ZM59 35V34H57V35H59ZM43 36H58V34H43V36ZM42 34V35H44V34H42Z" fill="white"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="59" height="66" fill="none" viewBox="0 0 59 66">:q<rect width="17" height="27" x="1.5" y="19.5" stroke="#fff" stroke-width="3" rx="3.5"/><path stroke="#fff" stroke-width="3" d="M18 20.5L34.2567 2.437C34.8698 1.75578 36 2.18947 36 3.10596V62.894C36 63.8105 34.8698 64.2442 34.2567 63.563L18 45.5"/><path fill="#fff" d="M58 34H59V33H58V34ZM43 34V33H42V34H43ZM58 35V36H59V35H58ZM43 35H42V36H43V35ZM58 33H43V35H58V33ZM59 35V34H57V35H59ZM43 36H58V34H43V36ZM42 34V35H44V34H42Z"/></svg>

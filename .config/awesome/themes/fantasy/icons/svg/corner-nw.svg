@@ -1,8 +1,1 @@
-<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="-1.5" y="1.5" width="27" height="60" transform="matrix(-1 0 0 1 197 8.9407e-08)" stroke="black" stroke-width="3"/>
-<rect x="-1.5" y="1.5" width="27" height="60" transform="matrix(-1 0 0 1 197 69)" stroke="black" stroke-width="3"/>
-<rect x="-1.5" y="1.5" width="27" height="58" transform="matrix(-1 0 0 1 197 139)" stroke="black" stroke-width="3"/>
-<path d="M75.5 198.5V171.5H1.50004V198.5H75.5Z" stroke="black" stroke-width="3"/>
-<path d="M158.5 198.5V171.5H84.5V198.5H158.5Z" stroke="black" stroke-width="3"/>
-<rect x="-1.5" y="1.5" width="157" height="154" transform="matrix(-1 0 0 1 157 8.9407e-08)" stroke="black" stroke-width="3"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="none" viewBox="0 0 200 200"><rect width="27" height="60" x="-1.5" y="1.5" stroke="#000" stroke-width="3" transform="matrix(-1 0 0 1 197 8.9407e-08)"/><rect width="27" height="60" x="-1.5" y="1.5" stroke="#000" stroke-width="3" transform="matrix(-1 0 0 1 197 69)"/><rect width="27" height="58" x="-1.5" y="1.5" stroke="#000" stroke-width="3" transform="matrix(-1 0 0 1 197 139)"/><path stroke="#000" stroke-width="3" d="M75.5 198.5V171.5H1.50004V198.5H75.5Z"/><path stroke="#000" stroke-width="3" d="M158.5 198.5V171.5H84.5V198.5H158.5Z"/><rect width="157" height="154" x="-1.5" y="1.5" stroke="#000" stroke-width="3" transform="matrix(-1 0 0 1 157 8.9407e-08)"/></svg>
