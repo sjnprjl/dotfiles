@@ -21,9 +21,9 @@ ncmpcpp_directory = ~/.config/ncmpcpp
 #
 ##### connection settings #####
 #
-#mpd_host = localhost
+mpd_host = "127.0.0.1"
 #
-#mpd_port = 6600
+mpd_port = "6600"
 #
 #mpd_connection_timeout = 5
 #
@@ -40,15 +40,15 @@ mpd_music_dir = ~/Music
 ## visualization or 44100:16:2 for stereo visualization. Example configuration
 ## (it has to be put into mpd.conf):
 ##
-## audio_output {
-##        type            "fifo"
-##        name            "Visualizer feed"
-##        path            "/tmp/mpd.fifo"
-##        format          "44100:16:2"
-## }
+ #audio_output {
+        #type            "fifo"
+        #name            "Visualizer feed"
+        #path            "/tmp/mpd.fifo"
+        #format          "44100:16:2"
+ #}
 ##
 #
-#visualizer_fifo_path = /tmp/mpd.fifo
+visualizer_fifo_path = /tmp/mpd.file
 #
 ##
 ## Note: Below parameter is needed for ncmpcpp to determine which output
@@ -56,12 +56,12 @@ mpd_music_dir = ~/Music
 ## sound as currently there are some problems with it.
 ##
 #
-#visualizer_output_name = Visualizer feed
+visualizer_output_name = "my_fifo"
 #
 ##
 ## If you set format to 44100:16:2, make it 'yes'.
 ##
-#visualizer_in_stereo = yes
+visualizer_in_stereo = yes
 #
 ##
 ## Note: Below parameter defines how often ncmpcpp has to "synchronize"
@@ -70,7 +70,7 @@ mpd_music_dir = ~/Music
 ## that sane values start with >=10.
 ##
 #
-#visualizer_sync_interval = 30
+visualizer_sync_interval = 10
 #
 ##
 ## Note: To enable spectrum frequency visualization you need to compile ncmpcpp
@@ -79,11 +79,11 @@ mpd_music_dir = ~/Music
 #
 ## Available values: spectrum, wave, wave_filled, ellipse.
 ##
-#visualizer_type = wave
+visualizer_type = spectrum
 #
-#visualizer_look = ●▮
+visualizer_look = "▋▋"
 #
-#visualizer_color = blue, cyan, green, yellow, magenta, red
+visualizer_color = "white"
 #
 ## Alternative subset of 256 colors for terminals that support it.
 ##
@@ -112,7 +112,7 @@ mpd_music_dir = ~/Music
 #
 ## Defines how long messages are supposed to be visible.
 ##
-#message_delay_time = 5
+message_delay_time = 5
 #
 ##### song format #####
 ##
@@ -140,7 +140,7 @@ mpd_music_dir = ~/Music
 ## certain tags are present, you can archieve it by grouping them with brackets,
 ## e.g. '{%a - %t}' will be evaluated to 'ARTIST - TITLE' if both tags are
 ## present or '' otherwise.  It is also possible to define a list of
-## alternatives by providing several groups and separating them with '|',
+## alternatives by p●oroviding several groups and separating them with '|',
 ## e.g. '{%t}|{%f}' will be evaluated to 'TITLE' or 'FILENAME' if the former is
 ## not present.
 ##
@@ -270,6 +270,8 @@ mpd_music_dir = ~/Music
 ## notifications etc.
 ##
 #execute_on_song_change = ""
+#execute_on_song_change = notify-send "Now Playing" "$(mpc --format '%title% \n%artist% - %album%' current)"
+#execute_on_song_change = notify-send "Now Playing" "$(mpc --format '%title% \n  %artist% ' current)"
 #
 ##
 ## Note: Custom command that will be executed each time player state
@@ -316,7 +318,7 @@ mpd_music_dir = ~/Music
 ## Note: You can specify third character which will be used to build 'empty'
 ## part of progressbar.
 ##
-#progressbar_look = =>
+progressbar_look = "▃▃▃"
 #
 ## Available values: database, playlist.
 ##
@@ -529,7 +531,7 @@ mpd_music_dir = ~/Music
 #
 #progressbar_elapsed_color = green:b
 #
-#statusbar_color = default
+#statusbar_color = "white"
 #
 #statusbar_time_color = default:b
 #

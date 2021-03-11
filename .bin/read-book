@@ -1,0 +1,40 @@
+#!/usr/bin/bash
+BOOK_DIR="$HOME/Dev/books-i-read"
+firefox-developer-edition $BOOK_DIR/
+#declare -A books
+
+#display() {
+        ##filename="${file##*/}"
+        ##ext="${filename##*.}"
+        ##first="${filename%.*}"
+        #data=""
+        #for book in "${!books[@]}"; do 
+            #ext="${books[$book]##*.}"
+            #x=$(echo "$book => $(echo ${books[$book]} | grep pdf | cut -c 1-30)")...$ext
+            #data+=$x"\n"
+        #done
+        #echo -e $data
+#}
+#store() {
+    #COUNT=1
+    #for file in $BOOK_DIR/*; do 
+        #filename="${file##*/}"
+        #books[$COUNT]=$filename
+        #((COUNT++))
+    #done
+#}
+#choose() {
+    #if [ -z "$1" ]
+    #then
+        #echo "You choose none!"
+    #else
+        #echo ${books[$1]}
+        #x=$(echo $BOOK_DIR/* | grep "^${books[$1]}")
+        #firefox-developer-edition $BOOK_DIR/"$x"
+    #fi
+
+#}
+#store
+#display
+#choose $1
+

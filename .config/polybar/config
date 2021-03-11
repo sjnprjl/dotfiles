@@ -31,10 +31,10 @@ alert = #bd2c40
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 27
-ffset-x = 1%
 ;offset-y = 1%
 ;radius = 6.0
 fixed-center = false
+
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -49,16 +49,16 @@ padding-left = 0
 padding-right = 2
 
 module-margin-left = 1
-module-margin-right = 3
+module-margin-right = 1
 
 font-0 = VT323:pixelsize=12;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = fontawesome:fontformat=truetype:size=8:antialias=false;0
 
-modules-left =   
-modules-center = pulseaudio 
-modules-right = updates wlan packages battery powermenu  xbacklight
+modules-left =
+modules-center = pulseaudio backlight-acpi 
+modules-right = reddit github updates wlan packages battery date
 
 tray-position = right
 tray-padding = 10
@@ -78,6 +78,29 @@ tray-padding = 10
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+separator = %{F#c2555c}>%{F--}
+
+;browser shortcut modules
+[module/github]
+type=custom/script
+interval = 60
+format =  <label>
+exec= echo "/sujanp100"
+format-underline = ${colors.secondary}
+label-layout = " %output% "
+label-layout-underline = ${colors.secondary}
+click-left = "firefox-developer-edition --new-tab  github.com/sujanp100"
+[module/reddit]
+type=custom/script
+interval = 60
+format = <label>
+format-prefix =    
+exec= echo " /pho3nix700"
+format-foreground = #e46330
+format-underline = ${colors.secondary}
+label-layout = " %output% "
+label-layout-underline = ${colors.secondary}
+click-left = "firefox-developer-edition --new-tab https://www.reddit.com/"
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
@@ -122,18 +145,18 @@ label-song-ellipsis = true
 type = internal/xbacklight
 
 format = <label> <bar>
-label = BL
+label = 
 
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
+bar-width = 20
+bar-indicator = 
+bar-indicator-foreground = #000
 bar-indicator-font = 2
-bar-fill = ─
+bar-fill = 
 bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
+bar-fill-foreground = #fff
+bar-empty = 
 bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+bar-empty-foreground = #333
 
 [module/backlight-acpi]
 inherit = module/xbacklight
@@ -316,18 +339,17 @@ ramp-foreground = ${colors.foreground-alt}
 [module/updates]
 type=custom/script
 interval = 60
-tail = true
+format =  <label> updates
 exec= ~/.config/polybar/scripts/checkupdates | wc -l
-click-left = ~/.config/polybar/checkupdates
-format-prefix = " "
+;format-prefix = " "
 
-format-suffix = " updates "
-format-prefix-padding = 1
+;format-prefix-padding = 1
 
-format-suffix-underline = ${colors.secondary}
+;format-suffix-underline = ${colors.secondary}
 ;format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+;format-prefix-underline = ${colors.secondary}
 
+format-underline = ${colors.secondary}
 label-layout = " %output% "
 label-layout-underline = ${colors.secondary}
 

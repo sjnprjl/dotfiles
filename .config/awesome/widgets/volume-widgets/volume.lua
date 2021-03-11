@@ -26,14 +26,8 @@ local function worker(args)
     local mute_color = args.mute_color or colors.shades_of_grey[1]
     local text_margin = args.text_margin or 2
     local icon_margin = args.text_margin or 2
-    
-    
-    
 
     local text = wibox.widget.textbox()
-
-
-
 
    local progress_bar =  wibox.widget {
         max_value     = 1,
@@ -96,15 +90,17 @@ local function worker(args)
         function(widget , stdout , _, _, _) 
             local mute = string.match(stdout, "%[(o%D%D?)%]")
             local volume =  string.match(stdout , "(%d?%d?%d)%%")
+            local volume_up = "/home/sujan/.config/awesome/themes/fantasy/icons/png10/volume-up.png"
 
+            local volume_mute = "/home/sujan/.config/awesome/themes/fantasy/icons/png10/volume-muted.png"
             volume = tonumber(volume)
             
 
             if mute == "off" then 
                 progress_bar.color = mute_color
-                volume_icon.icon:set_image(beautiful.volume_muted)
+                volume_icon.icon:set_image(volume_up)
             else 
-                volume_icon.icon:set_image(beautiful.volume_up)
+                volume_icon.icon:set_image(volume_mute)
                 progress_bar.color = fg_color
             end
             progress_bar.value = volume / 100

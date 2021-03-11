@@ -152,15 +152,15 @@
 #def_key "mouse"
 #  mouse_event
 #
-#def_key "up"
-#  scroll_up
+def_key "k"
+  scroll_up
 #
 #def_key "shift-up"
 #  select_item
 #  scroll_up
 #
-#def_key "down"
-#  scroll_down
+def_key "j"
+  scroll_down
 #
 #def_key "shift-down"
 #  select_item
@@ -304,8 +304,8 @@
 #def_key "p"
 #  pause
 #
-#def_key ">"
-#  next
+#def_key "p"
+#  #pause
 #
 #def_key "<"
 #  previous

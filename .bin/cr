@@ -1,0 +1,9 @@
+#!/bin/bash
+dir=$1
+#cp -r ~/Dev/cpp/__template/*.cpp $dir/$dir.cpp && cd $dir && mv *.cpp $dir.cpp  && nvim *.cpp
+mkdir $dir && cp -r ~/Dev/cpp/__template/*.cpp $dir/$dir.cpp && nvim $dir/*.cpp
+
+
+
+
+

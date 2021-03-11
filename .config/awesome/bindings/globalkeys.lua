@@ -223,7 +223,7 @@ end),
     -- Menubar
     --awful.key({ modkey }, "p", function() menubar.show() end,
               --{description = "show the menubar", group = "launcher"}) , 
-    awful.key({ modkey }, "p", function() awful.spawn("dmenu_run") end,
+    awful.key({ modkey }, "p", function() awful.spawn("rofi -combi-modi window,drun,ssh -font \"vt323 18\" -show combi") end,
               {description = "show the menubar", group = "launcher"})
 
   )

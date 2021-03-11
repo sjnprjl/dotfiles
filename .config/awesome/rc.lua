@@ -22,9 +22,14 @@ require("main.error-handling")
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/theme.lua")
+--beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/theme.lua")
+local chosen_theme = "theme"
+beautiful.init(string.format("%s/.config/awesome/themes/theme.lua", os.getenv("HOME")))
+--beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/theme.lua")
+--beautiful.init("/home/sujan/.config/awesome/themes/theme.lua")
 beautiful.wallpaper = RC.vars.wallpaper
 -- }}}
+
 
 modkey = RC.vars.modkey
 
@@ -102,9 +107,10 @@ require("main.signals")
 -- }}}
 
 --Some useless gaps
-beautiful.useless_gap = 6
+beautiful.useless_gap = 15
 -- Autostart file
-awful.spawn.with_shell("~/.config/awesome/autostart")
+--awful.spawn.with_shell("~/.config/awesome/autostart")
+awful.util.spawn_with_shell("~/.config/awesome/autostart")
 
 collectgarbage("setpause", 110)
 collectgarbage("setstepmul", 1000)

@@ -1,0 +1,11 @@
+#!/bin/bash
+intern="eDP-1"
+extern="HDMI-1"
+
+case "$1" in 
+    "disconnect") xrandr --output "$extern" --off --output "$intern" --auto;; 
+    "new-mon") xrandr --output "$intern" --primary --auto --output "$extern" --right-of "$intern" --auto;;
+    "duplicate") xrandr --output "$intern" --auto --output "$extern" --same-as "$intern" ;;
+    *) notify-send "Multi Monitor" "Unknown Operation";;
+esac
+
