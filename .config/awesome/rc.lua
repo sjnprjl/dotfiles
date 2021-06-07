@@ -23,7 +23,18 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 local my_table      = awful.util.table or gears.table -- 4.{0,1} compatibility
 local dpi           = require("beautiful.xresources").apply_dpi
 -- }}}
+--
+-- custom variables
+local border_width = dpi(3)
+local colors = {
+    "#FFCF99", -- [1]          -- SKIN
+    "#13C4A3", -- [2]          -- GREEN
+    "#F54748", -- [3]          -- RED
+    "#F6E27F", -- [4]          -- LIGHT YELLOW
+    "#351431", -- [5]          -- DARK PURPLE
+} 
 
+local border_color = colors[4]
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -94,7 +105,7 @@ local vi_focus     = false -- vi-like client focus - https://github.com/lcpz/awe
 local cycle_prev   = true -- cycle trough all previous client or just the first -- https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "vim"
 local gui_editor   = os.getenv("GUI_EDITOR") or "gvim"
-local browser      = os.getenv("BROWSER") or "firefox"
+local browser      = "google-chrome-stable"
 local scrlocker    = "slock"
 
 awful.util.terminal = terminal
@@ -236,7 +247,7 @@ screen.connect_signal("arrange", function (s)
         if only_one and not c.floating or c.maximized then
             c.border_width = 0
         else
-            c.border_width = beautiful.border_width
+            c.border_width = border_width or beautiful.border_width
         end
     end
 end)
@@ -255,8 +266,8 @@ root.buttons(my_table.join(
 -- {{{ Key bindings
 globalkeys = my_table.join(
     -- Take a screenshot
-    -- https://github.com/lcpz/dots/blob/master/bin/screenshot
-    awful.key({ altkey }, "p", function() os.execute("screenshot") end,
+    -- https://github.com/lcpz/dots/blob/master/bin/screensho
+    awful.key({ altkey }, "p", function() awful.util.spawn_with_shell("ksnip -d 2") end,
               {description = "take a screenshot", group = "hotkeys"}),
 
     -- X screen locker
@@ -442,6 +453,11 @@ globalkeys = my_table.join(
     --bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3blocks
     --bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3blocks
     awful.key({ }, "XF86AudioMute", function () os.execute("pactl set-sink-mute @DEFAULT_SINK@ toggle ") end, {description = "toggle mute", group = "hotkeys"}),
+    awful.key({ }, "XF86AudioLowerVolume", function () os.execute("pactl set-sink-volume @DEFAULT_SINK@ -10% ") end,
+              {description = "-10%", group = "hotkeys"}),
+    awful.key({ }, "XF86AudioRaiseVolume", function () os.execute("pactl set-sink-volume @DEFAULT_SINK@ +10% ") end,
+              {description = "+10%", group = "hotkeys"}),
+
 
 
     -- ALSA volume control
@@ -571,7 +587,7 @@ clientkeys = my_table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+    awful.key({ "Control", "Shift"   }, "d",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
@@ -770,11 +786,11 @@ client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = vi_focus})
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("focus", function(c) c.border_color = border_color or beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 -- possible workaround for tag preservation when switching back to default screen:
 -- https://github.com/lcpz/awesome-copycats/issues/251
 -- }}}
-beautiful.useless_gap = 5
+--beautiful.useless_gap = 5
 --beautiful.gaps_wingle_client = true

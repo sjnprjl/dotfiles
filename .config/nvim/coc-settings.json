@@ -12,7 +12,8 @@
         "css",
         "javascript",
         "html",
-        "php"
+        "php", 
+        "java"
     ], 
     "diagnostic.checkCurrentLine": false,
     "tsserver.npm": "/usr/local/bin/npm",
