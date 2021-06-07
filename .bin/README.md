@@ -8,16 +8,9 @@ simple scripts that helps me in my daily life
 ```sh
 a-update
 ```
-
-> requirements
-- script that install required packages
- ```sh
- requirements
- ```
- 
-> shit
+> ctc
 - script that copy content from file
 ```sh
-shit filename
+ctc filename
 ```
 
