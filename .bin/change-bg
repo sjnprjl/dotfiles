@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+FILE=$HOME/.wallpapers
+if [ ! -d $FILE ] 
+then 
+    echo "Please ensure your image file is inside $FILE DIRECTORY"
+    exit 9999
+else
+    feh --bg-scale $FILE/$1
+fi

@@ -32,9 +32,13 @@ local colors = {
     "#F54748", -- [3]          -- RED
     "#F6E27F", -- [4]          -- LIGHT YELLOW
     "#351431", -- [5]          -- DARK PURPLE
+    "#F9DC5C", -- [6]          -- NAPLES YELLOW
+    "#087CA7", -- [7]          -- CG BLUE
+    "#0A8754", -- [8]          -- SEA GREEN
+    "#D91E36", -- [9]          -- CRIMSON
 } 
 
-local border_color = colors[4]
+local border_color = colors[6]
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -68,7 +72,7 @@ local function run_once(cmd_arr)
     end
 end
 
-run_once({ "urxvtd", "unclutter -root", "picom" }) -- entries must be separated by commas
+run_once({ "$HOME/.config/autostart" }) -- entries must be separated by commas
 
 -- This function implements the XDG autostart specification
 --[[
@@ -91,7 +95,7 @@ local themes = {
     "holo",            -- 4
     "multicolor",      -- 5
     "powerarrow",      -- 6
-    "powerarrow-dark", -- 7
+    "powerarrow-dark", -- 7 -- choosen theme
     "rainbow",         -- 8
     "steamburn",       -- 9
     "vertex",          -- 10
