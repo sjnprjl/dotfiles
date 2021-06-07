@@ -21,7 +21,6 @@ set nu rnu
 set nowrap
 set smartcase
 set noswapfile
-set undofile
 set incsearch
 set hlsearch
 set showcmd
@@ -34,6 +33,10 @@ set signcolumn=yes
 set nowritebackup
 set noundofile
 set nobackup
+set cursorline
+"set showtabline=2
+"set laststatus=2
+set termguicolors
 " Use <c-space> to trigger completion.
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
@@ -96,6 +99,7 @@ endfunction
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -155,7 +159,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-
 call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'jremmen/vim-ripgrep'
@@ -172,7 +175,6 @@ Plug 'edkolev/promptline.vim'
 Plug 'junegunn/fzf', {'do': { -> fzf#install()}}
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter'
-"Plg 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
@@ -180,19 +182,23 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
+"Plug 'garbas/vim-snipmate'
+Plug 'artanikin/vim-synthwave84'
+Plug 'Badacadabra/vim-archery'
+Plug 'honza/vim-snippets' 
+
 
 call plug#end()
 
-let g:gruvbox_constrast_dark = 'hard'
+"let g:gruvbox_constrast_dark = 'hard'
+"let g:airline_theme = 'archery'
 if exists('+termguicolorsk')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum]"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum]"
 endif
 let g:gruvbox_invert_selection='0'
-colorscheme gruvbox 
-set background=dark
-
+colorscheme dracula 
+set background=dark     
 if executable('rg')
     let g:rg_drive_root='true'
 endif
@@ -220,7 +226,7 @@ nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-k> :tabnext<CR>
 inoremap jk <ESC> 
-
+inoremap kj <ESC> 
 map <leader>pv :NERDTreeToggle<CR>
 " Fzf
 nnoremap <leader><leader> :GFiles<CR>
@@ -245,3 +251,4 @@ autocmd BufRead *.c, *.h, *.cpp, *.cc setlocal cindent
 let &t_ut=''
 let g:user_emmet_leader_key = ','
 
+autocmd FileType scss setl iskeyword+=@-@

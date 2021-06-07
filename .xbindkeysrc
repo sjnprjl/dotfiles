@@ -51,6 +51,10 @@
 "mpc volume +2"
   m:0x11 + c:123
   Shift+Mod2 + XF86AudioRaiseVolume
+#"flameshot"
+  #m:0x10 + c:107
+  #Mod2 + Print
+
 # Examples of commands:
 
 #"xbindkeys_show" 

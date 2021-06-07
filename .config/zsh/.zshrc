@@ -3,14 +3,15 @@ source ~/.config/zsh/.zprofile
 # Basic bash setting & themes
  export PATH=$PATH:$HOME/.bin
  export PATH=$PATH:$HOME/.bin/**/
+ export PATH=/home/$USER/.config/nvcode/utils/bin:$PATH
  #path+='$HOME/.bin'
  #export PATH
  setopt no_list_ambiguous
  bindkey -v
 
  # Setting up Defaults
- export TERMINAL='alacritty'
- export BROWSER='firefox'
+ export TERMINAL='kitty'
+ export BROWSER='google-chrome-stable'
 
  # Aliases
  alias tcli='transmission-cli'
@@ -34,6 +35,7 @@ source ~/.config/zsh/.zprofile
  alias vol='~/.bin/speaker-volume' 
  alias clock='tty-clock -c -s'
  alias repo='cd ~/Repo/dotfiles'
+ alias mendeley='cd ~/mendeleydesktop-1.19.8-linux-x86_64/bin/ && {./mendeleydesktop&} && cd -'
  # Git Prompt Settings
  autoload -Uz vcs_info
  precmd_vcs_info() { vcs_info }
@@ -46,10 +48,21 @@ source ~/.config/zsh/.zprofile
 
 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="spaceship"
+ZSH_THEME="half-life"
 
+# VARIABLES
+ZSH_AUTOSUGGEST_USE_ASYNC=true
 
-plugins=(git)
+plugins=(
+    git
+    archlinux 
+    battery 
+    colorize 
+    django 
+    gitfast 
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
 source $ZSH/oh-my-zsh.sh
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -61,9 +74,25 @@ neofetch
 # ( ) # Hide shell job control messages.
 (cat ~/.cache/wal/sequences &)
 
-# Alternative (blocks terminal for 0-3ms)
-cat ~/.cache/wal/sequences
-
 # To add support for TTYs this line can be optionally added.
 source ~/.cache/wal/colors-tty.sh
 #neofetch --source ~/.config/neofetch/thumbnails/
+### Fix slowness of pastes with zsh-syntax-highlighting.zsh
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+### Fix slowness of pastes
+
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
+
+
