@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+DIR=$HOME/.wallpapers
+change-bg $1
+cp $1  $DIR/.desktop-wall.jpg
+wal -i $DIR/$1

@@ -12,6 +12,7 @@ source ~/.config/zsh/.zprofile
  # Setting up Defaults
  export TERMINAL='kitty'
  export BROWSER='google-chrome-stable'
+ export WALLPAPERS='$HOME/.wallpapers'
 
  # Aliases
  alias tcli='transmission-cli'
@@ -25,7 +26,6 @@ source ~/.config/zsh/.zprofile
  alias reset='cd ~; clear; source ~/.config/zsh/.zprofile'
  alias pac='sudo pacman'
  alias s='startx'
- alias w='nitrogen --set-zoom-fill --random ~/Media/wallpapers/backgrounds'
  alias ddate='date +"%R - %a, %B %d, %Y"'
  alias scp='sudo cp'
  alias lampp='sudo /opt/lampp/lampp' 
@@ -35,7 +35,7 @@ source ~/.config/zsh/.zprofile
  alias vol='~/.bin/speaker-volume' 
  alias clock='tty-clock -c -s'
  alias repo='cd ~/Repo/dotfiles'
- alias mendeley='cd ~/mendeleydesktop-1.19.8-linux-x86_64/bin/ && {./mendeleydesktop&} && cd -'
+ alias wwal='wal -i'
  # Git Prompt Settings
  autoload -Uz vcs_info
  precmd_vcs_info() { vcs_info }
@@ -48,7 +48,20 @@ source ~/.config/zsh/.zprofile
 
 
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="half-life"
+themes=(
+    "half-life"
+    "robbyrussell"
+    "afowler"
+    "alanpeabody"
+    "bira"
+    "bureau"
+    "crunch"
+    "emotty"
+    "gentoo"
+    "gozilla"
+    "kennethreitz"
+    )
+ZSH_THEME=$themes[11]
 
 # VARIABLES
 ZSH_AUTOSUGGEST_USE_ASYNC=true

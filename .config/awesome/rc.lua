@@ -545,8 +545,10 @@ globalkeys = my_table.join(
     -- User programs
     awful.key({ modkey }, "q", function () awful.spawn(browser) end,
               {description = "run browser", group = "launcher"}),
-    awful.key({ modkey }, "a", function () awful.spawn(gui_editor) end,
-              {description = "run gui editor", group = "launcher"}),
+    awful.key({ modkey }, "a", function () awful.spawn("anydesk") end,
+              {description = "run anydesk", group = "launcher"}),
+    awful.key({ modkey, "Control" }, "h", function () awful.spawn("hexchat") end,
+              {description = "run hexchat", group = "launcher"}),
 
     -- Default
     --[[ Menubar
