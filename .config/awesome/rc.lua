@@ -1,4 +1,5 @@
 --[[
+--
 
      Awesome WM configuration template
      github.com/lcpz
@@ -39,6 +40,8 @@ local colors = {
 } 
 
 local border_color = colors[6]
+local file_manager = "nemo"
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -115,28 +118,28 @@ local scrlocker    = "slock"
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5" }
 awful.layout.layouts = {
-    --awful.layout.suit.floating,
+    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    --awful.layout.suit.fair,
-    --awful.layout.suit.fair.horizontal,
-    --awful.layout.suit.spiral,
-    --awful.layout.suit.spiral.dwindle,
-    --awful.layout.suit.max,
-    --awful.layout.suit.max.fullscreen,
-    --awful.layout.suit.magnifier,
-    --awful.layout.suit.corner.nw,
-    --awful.layout.suit.corner.ne,
-    --awful.layout.suit.corner.sw,
-    --awful.layout.suit.corner.se,
-    --lain.layout.cascade,
-    --lain.layout.cascade.tile,
-    --lain.layout.centerwork,
-    --lain.layout.centerwork.horizontal,
-    --lain.layout.termfair,
-    --lain.layout.termfair.center,
+    awful.layout.suit.fair,
+    awful.layout.suit.fair.horizontal,
+    awful.layout.suit.spiral,
+    awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.max,
+    awful.layout.suit.max.fullscreen,
+    awful.layout.suit.magnifier,
+    awful.layout.suit.corner.nw,
+    awful.layout.suit.corner.ne,
+    awful.layout.suit.corner.sw,
+    awful.layout.suit.corner.se,
+    lain.layout.cascade,
+    lain.layout.cascade.tile,
+    lain.layout.centerwork,
+    lain.layout.centerwork.horizontal,
+    lain.layout.termfair,
+    lain.layout.termfair.center,
 }
 
 awful.util.taglist_buttons = my_table.join(
@@ -206,13 +209,13 @@ beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv
 -- }}}
 
 -- {{{ Menu
-local myawesomemenu = {
-    { "hotkeys", function() return false, hotkeys_popup.show_help end },
-    { "manual", terminal .. " -e man awesome" },
-    { "edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
-    { "restart", awesome.restart },
-    { "quit", function() awesome.quit() end }
-}
+--local myawesomemenu = {
+    --{ "hotkeys", function() return false, hotkeys_popup.show_help end },
+    --{ "manual", terminal .. " -e man awesome" },
+    --{ "edit config", string.format("%s -e %s %s", terminal, editor, awesome.conffile) },
+    --{ "restart", awesome.restart },
+    --{ "quit", function() awesome.quit() end }
+--}
 awful.util.mymainmenu = freedesktop.menu.build({
     icon_size = beautiful.menu_height or dpi(16),
     before = {
@@ -549,24 +552,27 @@ globalkeys = my_table.join(
               {description = "run anydesk", group = "launcher"}),
     awful.key({ modkey, "Control" }, "h", function () awful.spawn("hexchat") end,
               {description = "run hexchat", group = "launcher"}),
+    awful.key({ modkey, "Control" }, "d", function () awful.spawn("discord") end,
+              {description = "run discord", group = "launcher"}),
+    awful.key({ modkey, "Control" }, "f", function () awful.spawn(file_manager) end,
+              {description = "run file manager", group = "launcher"}),
 
     -- Default
     --[[ Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
     --]]
-    awful.key({ modkey }, "d", function ()
-            os.execute(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
-            beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
-        end,
-        {description = "show dmenu", group = "launcher"}), 
+    --awful.key({ modkey }, "d", function ()
+            --os.execute(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
+            --beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
+        --end,
+        --{description = "show dmenu", group = "launcher"}), 
     -- alternatively use rofi, a dmenu-like application with more features
     -- check https://github.com/DaveDavenport/rofi for more details
-    --[[awful.key({ modkey }, "c", function ()
-            --os.execute(string.format("rofi -show %s -theme %s",
-            --'drun', 'dmenu'))
+    awful.key({ modkey }, "d", function ()
+            os.execute("rofi -show combi -combi-modi window,drun,run")
         end,
-        {description = "show rofi", group = "launcher"}),]]
+        {description = "show rofi", group = "launcher"}),
     -- Prompt
     awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),

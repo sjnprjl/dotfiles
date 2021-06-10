@@ -11,7 +11,7 @@ source ~/.config/zsh/.zprofile
 
  # Setting up Defaults
  export TERMINAL='kitty'
- export BROWSER='google-chrome-stable'
+ #export BROWSER='google-chrome-stable'
  export WALLPAPERS='$HOME/.wallpapers'
 
  # Aliases
