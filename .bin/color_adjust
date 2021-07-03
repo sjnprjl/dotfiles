@@ -1,0 +1,104 @@
+#!/usr/bin/env python3
+"""
+Color Adjust
+
+Usage: 
+    color_adjust hex <hv> (--light <perc-value> | --dark <perc-value>)  
+    color_adjust rgb <r> <g> <b> (--light <perc-value> | --dark <perc-value>)  
+    color_adjust -h | --help
+    color_adjust -v | --version
+
+Options: 
+    -h --help                   Show this screen.
+    -v --version                Display version.
+    --hex <hv>                  Hex value without # [Example: aeaeae].
+    --rgb <r> <g> <b>           rgb numeric value separated with spaces [Example: 22 22 22].
+    -l, --light <perc-value>    lighter version of color.
+    -d, --dark <perc-value>     darker version of color.
+
+"""
+from colorsys import rgb_to_hls, hls_to_rgb
+
+from docopt import docopt
+
+
+__version__ = "0.01"
+args = docopt(__doc__, version=__version__)
+
+
+def rgb_to_hex(rgb):
+    return "%02x%02x%02x" % rgb
+
+
+def hex_to_rgb(value):
+    value = value.lstrip("#")
+    lv = len(value)
+    return tuple(int(value[i : i + lv // 3], 16) for i in range(0, lv, lv // 3))
+
+
+def adjust_color_lightness(r, g, b, factor):
+    h, l, s = rgb_to_hls(r / 255.0, g / 255.0, b / 255.0)
+    l = max(min(l * factor, 1.0), 0.0)
+    r, g, b = hls_to_rgb(h, l, s)
+    return int(r * 255), int(g * 255), int(b * 255)
+
+
+def lighten_color(r, g, b, factor=0.1):
+    return adjust_color_lightness(r, g, b, 1 + factor)
+
+
+def darken_color(r, g, b, factor=0.1):
+    return adjust_color_lightness(r, g, b, 1 - factor)
+
+
+def parse_rgb(r, g, b):
+    if r.isnumeric() and g.isnumeric() and b.isnumeric():
+        return (int(r), int(g), int(b))
+    else:
+        return
+
+
+def make_darken(r, g, b):
+    if args["--dark"] is not None:
+        return darken_color(r, g, b, int(args["--dark"]) / 100)
+    return
+
+
+def make_lighten(r, g, b):
+    if args["--light"] is not None:
+        return lighten_color(r, g, b, int(args["--light"]) / 100)
+    return
+
+
+def do_if_hex():
+    hx = args["hex"]
+    if hx:
+        hv = "#{}".format(args["<hv>"])
+        r, g, b = hex_to_rgb(hv)
+        if make_darken(r, g, b):
+            print("#" + rgb_to_hex(make_darken(r, g, b)))
+        if make_lighten(r, g, b):
+            print("#" + rgb_to_hex(make_lighten(r, g, b)))
+
+
+def do_if_rgb():
+    rgb = args["rgb"]
+    if rgb:
+        r = args["<r>"]
+        g = args["<g>"]
+        b = args["<b>"]
+        if parse_rgb(r, g, b):
+            r, g, b = parse_rgb(r, g, b)
+            if make_darken(r, g, b):
+                print("#" + rgb_to_hex(make_darken(r, g, b)))
+            if make_lighten(r, g, b):
+                print("#" + rgb_to_hex(make_lighten(r, g, b)))
+
+
+def main():
+    do_if_rgb()
+    do_if_hex()
+
+
+if __name__ == "__main__":
+    main()

@@ -190,14 +190,14 @@ Plug 'honza/vim-snippets'
 
 call plug#end()
 
-"let g:gruvbox_constrast_dark = 'hard'
+let g:gruvbox_constrast_dark = 'hard'
 "let g:airline_theme = 'archery'
 if exists('+termguicolorsk')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum]"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum]"
 endif
-let g:gruvbox_invert_selection='0'
-colorscheme dracula 
+    let g:gruvbox_invert_selection='0'
+    colorscheme gruvbox 
 set background=dark     
 if executable('rg')
     let g:rg_drive_root='true'
@@ -238,6 +238,7 @@ nnoremap <leader>ag       :Ag! <C-R><C-W><CR>
 nnoremap <leader>m        :History<CR>
 
 :map <leader>a            :%y+<CR>
+:map <C-a>            :%y+<CR>
 
 
 autocmd BufRead *.c, *.h, *.cpp, *.cc setlocal cindent
@@ -252,3 +253,7 @@ let &t_ut=''
 let g:user_emmet_leader_key = ','
 
 autocmd FileType scss setl iskeyword+=@-@
+augroup cppp
+    autocmd!
+    autocmd BufNewFile *.cpp 0r $HOME/coding/templates.cpp 
+augroup END

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+. "$HOME/.config/theme-manager-bspwm/scripts/utils"
+config() {
+        cat > $dir/basic_config.ini <<- EOF
+[basic_config]
+battery = ${BATTERY}
+bat_adapter = ${BAT_ADAPTER}
+net_interface = ${NET_INTERFACE}
+backlight_type = internal/${BACKLIGHT_TYPE}
+backlight_card = ${BACKLIGHT_CARD}
+launcher = $HOME/.config/rofi/launchers/colorful/${RTHEME}.rasi
+EOF
+
+}
+config
+
+
+
+
+
+

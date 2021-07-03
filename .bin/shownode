@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+. "$HOME/.config/theme-manager-bspwm/conf"
+SDIR="$HOME/.config/rofi/launchers/text/"
+
+windows=($(bspc query -N -n .window.hidden))                                                
+index=$(for i in "${!windows[@]}"; do printf "%s %s |" $i "$(xtitle ${windows[i]})"; done) 
+
+# Launch Rofi
+MENU="$(rofi -no-config -no-lazy-grab -sep "|" -dmenu -i -p '' \
+-theme $SDIR/style_1 \
+<<< "$(echo ${index%?})")"
+
+[[ ! -z "$MENU" ]] && bspc node "${windows[${MENU%% *}]}" -g hidden=off                                       

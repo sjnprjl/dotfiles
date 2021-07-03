@@ -2,7 +2,7 @@ source ~/.config/zsh/.zprofile
 
 # Basic bash setting & themes
  export PATH=$PATH:$HOME/.bin
- export PATH=$PATH:$HOME/.bin/**/
+ export PATH=$PATH:$HOME/coding/scripts/
  export PATH=/home/$USER/.config/nvcode/utils/bin:$PATH
  #path+='$HOME/.bin'
  #export PATH
@@ -108,4 +108,4 @@ compinit
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
 
-
+ulimit -s unlimited

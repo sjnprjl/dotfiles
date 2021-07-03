@@ -1,0 +1,17 @@
+#!/bin/bash
+
+while :; do
+        bspc subscribe --count 1 node_focus > /dev/null || break
+        bspc query --tree --node focused.floating | jq --raw-output '
+                .client.layer |
+                        if (. != "normal") then
+                                "normal"
+                        else
+                                "above"
+                        end,
+                        .
+        ' | while read layer; do
+                bspc node focused.floating --layer "$layer"
+                #echo $layer
+        done
+done

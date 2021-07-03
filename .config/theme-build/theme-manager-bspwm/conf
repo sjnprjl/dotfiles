@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+PTHEME="nordiac" # Polybar theme
+RTHEME="style_7" #ROFI THEME
+BMENU="style_2" #BASIC MENU
+
+#Use the following command to list batteries and adapters:
+#ls -1 /sys/class/power_supply/
+#OPTIONS
+# - BAT0 
+# - BAT1
+BATTERY="" # Battery
+BAT_ADAPTER=""
+
+# Network Interface
+NET_INTERFACE="wlp3s0" #wireless network
+
+# -----------------------------------------
+#OPTIONS
+# - xbacklight
+# - backlight 
+BACKLIGHT_TYPE="backlight" 
+# ----------------------------------------- 
+#Use the following command to list available cards:
+#ls -1 /sys/class/backlight/
+#OPTIONS
+# - intel_backlight 
+# - amdgpu_bl0
+BACKLIGHT_CARD="intel_backlight"
