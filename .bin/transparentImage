@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-convert -size $1x$2 canvas:transparent $3.png

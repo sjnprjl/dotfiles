@@ -105,6 +105,7 @@ local themes = {
 }
 
 local chosen_theme = themes[7]
+
 local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "kitty"
@@ -550,8 +551,8 @@ globalkeys = my_table.join(
               {description = "run browser", group = "launcher"}),
     awful.key({ modkey }, "a", function () awful.spawn("anydesk") end,
               {description = "run anydesk", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "h", function () awful.spawn("hexchat") end,
-              {description = "run hexchat", group = "launcher"}),
+    --awful.key({ modkey, "Control" }, "h", function () awful.spawn("hexchat") end,
+              --{description = "run hexchat", group = "launcher"}),
     awful.key({ modkey, "Control" }, "d", function () awful.spawn("discord") end,
               {description = "run discord", group = "launcher"}),
     awful.key({ modkey, "Control" }, "f", function () awful.spawn(file_manager) end,
