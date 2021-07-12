@@ -1,14 +1,50 @@
 #!/usr/bin/env bash
+trap '' INT
 
-# ----------------------------------------------------------+
-# Author:               sujan parajuli                      |
-# Description:          Copy content of file to clipboard   | 
-# Require:              xclip program                       |
-# ----------------------------------------------------------+
-if test -z "$1"
-then
-    echo "Please specify some file"
-else
+
+help() {
+    cat << EOF
+Usage: ctc <file-name>
+
+REQUIRED: (xclip)
+With no file, read standard input. 
+
+    -h --help       Display this help and exit
+EOF
+exit 0
+}
+copy() {
+    echo "$1" | xclip -selection clipboard
+    echo -e "[✨] Copied to clipboard..."
+}
+from_stdin() {
+    trap 'echo' INT
+    in=$(cat)
+    copy "$in"
+
+}
+from_file() {
     cat $1 | xclip -selection clipboard
-    echo "copied to clipboard from $1"
+    echo "[✨] Copied to clipboard from $1"
+}
+
+case $1 in
+    -h|--help)
+        help
+        ;;
+esac
+
+
+if [[ ! -f "/usr/bin/xclip" ]];
+then 
+    echo "[🚨] xclip required.."
+    exit 0
+fi
+
+if [[ ! -f "$1" ]] 
+then
+    from_stdin
+    exit 0
+else
+    from_file $1
 fi
