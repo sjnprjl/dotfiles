@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 trap '' INT
+VERSION=1.2
 
+ver() {
+    echo [🚀] $VERSION
+    exit 0
+}
+bad() {
+    echo [🔥] Bad Command. 
+    help
+}
 
 help() {
     cat << EOF
@@ -10,6 +19,7 @@ REQUIRED: (xclip)
 With no file, read standard input. 
 
     -h --help       Display this help and exit
+    -v --verision   Display the version of the script
 EOF
 exit 0
 }
@@ -32,6 +42,12 @@ case $1 in
     -h|--help)
         help
         ;;
+    -v|--version)
+        ver
+        ;;
+    -*|--*)
+        bad
+        ;;
 esac
 
 
@@ -43,8 +59,11 @@ fi
 
 if [[ ! -f "$1" ]] 
 then
+    if [[ $1 == "" ]]; then 
     from_stdin
-    exit 0
+else 
+    echo "[🚨] No such file found."
+    fi
 else
     from_file $1
 fi
