@@ -23,20 +23,43 @@ With no file, read standard input.
 EOF
 exit 0
 }
-copy() {
-    echo "$1" | xclip -selection clipboard
-    echo -e "[✨] Copied to clipboard..."
+no_such_file() {
+    if [[ ! -f $1 ]]; then
+        echo "[🚨] No such file found."
+        exit 0
+    fi
 }
 from_stdin() {
     trap 'echo' INT
     in=$(cat)
-    copy "$in"
-
+    echo "$in" | xclip -selection clipboard
+    echo -e "[✨] Copied to clipboard..."
 }
+
 from_file() {
     cat $1 | xclip -selection clipboard
     echo "[✨] Copied to clipboard from $1"
 }
+copy() {
+    if [[ ! -f $1 ]]; then
+        if [[ $1 == "" ]]; then
+            from_stdin
+        else
+            no_such_file
+        fi
+    else
+        from_file $1
+    fi
+    exit 0
+}
+
+if [[ ! -f "/usr/bin/xclip" ]];
+then 
+    echo "[🚨] xclip required.."
+    exit 0
+fi
+
+
 
 case $1 in
     -h|--help)
@@ -45,25 +68,14 @@ case $1 in
     -v|--version)
         ver
         ;;
+    --)
+        copy $2
+        ;;
     -*|--*)
-        bad
+        bad 
+        ;;
+    *)
+        copy $1
         ;;
 esac
 
-
-if [[ ! -f "/usr/bin/xclip" ]];
-then 
-    echo "[🚨] xclip required.."
-    exit 0
-fi
-
-if [[ ! -f "$1" ]] 
-then
-    if [[ $1 == "" ]]; then 
-    from_stdin
-else 
-    echo "[🚨] No such file found."
-    fi
-else
-    from_file $1
-fi
