@@ -7,3 +7,4 @@ cd dotfiles
 bash install
 ```
 
+

@@ -1,1 +1,3 @@
-xbindkeys &
+export PATH=~/.bin:$PATH
+export AWT_TOOLKIT=MToolkit
+export _JAVA_AWT_WM_NONREPARENTING=1

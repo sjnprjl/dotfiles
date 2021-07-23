@@ -7,6 +7,9 @@ super + Return
 super + d
     rofi-launcher
 
+# open chrome 
+super + e 
+    google-chrome-stable
 #change polybar 
 super + t
     $HOME/.config/theme-manager-bspwm/scripts/change-polybar-theme
@@ -129,7 +132,7 @@ super + ctrl + {h,j,k,l}
     bspc node -p {west,south,north,east}
 
 # Move current window to a pre-selected space
-super + shift + m
+super + ctrl + m
     bspc node -n last.!automatic
 
 ## preselect the ratio

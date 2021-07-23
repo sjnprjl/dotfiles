@@ -2,18 +2,21 @@
     "suggest.noselect": false, 
     "suggest.enablePreview": true, 
     "suggest.removeDuplicateItems": true, 
+    "pyright.enable": true, 
     "codeLens.enable": true,
     "coc.preferences.jumpCommand": "drop",
     "coc.preferences.rootPatterns": [".git", ".vscode"], 
     "coc.preferences.formatOnSaveFiletypes": [
-        "python",
         "cpp",
+        "bash",
         "c",
         "css",
         "javascript",
         "html",
         "php", 
-        "java"
+        "java", 
+        "python"
+        
     ], 
     "diagnostic.checkCurrentLine": false,
     "tsserver.npm": "/usr/local/bin/npm",
@@ -21,5 +24,11 @@
     "javascript.implementationsCodeLens.enable": false,
     "typescript.referencesCodeLens.enable": false,
     "typescript.implementationsCodeLens.enable": false, 
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "autopep8", 
+    "python.formatting.autopep8Args": ["--aggressive",  "--aggressive"], 
+    "python.linting.flake8Enabled": true, 
+    "python.jediEnabled": true, 
+    "python.analysis.diagnosticEnabled": true, 
+    "python.autoComplete.extraPaths": []
+
 }

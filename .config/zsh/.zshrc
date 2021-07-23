@@ -16,26 +16,23 @@ source ~/.config/zsh/.zprofile
 
  # Aliases
  alias tcli='transmission-cli'
- alias fde='firefox-developer-edition'
- alias tsm='transmission-remote'
  alias v='nvim'
  alias vi='nvim'
  alias f='ranger'
  alias tty='tty-clock -C4 -c'
- alias commit='git add -A; git commit -m'
- alias reset='cd ~; clear; source ~/.config/zsh/.zprofile'
  alias pac='sudo pacman'
- alias s='startx'
  alias ddate='date +"%R - %a, %B %d, %Y"'
  alias scp='sudo cp'
- alias lampp='sudo /opt/lampp/lampp' 
  alias lla='ls -a'
  alias htdocs='cd /opt/lampp/htdocs'
  alias sn='shutdown now'
  alias vol='~/.bin/speaker-volume' 
  alias clock='tty-clock -c -s'
  alias repo='cd ~/Repo/dotfiles'
- alias wwal='wal -i'
+ alias lg="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(red)%h%C(r) —— %C(bold blue)%an%C(r): %C(white)%s%C(r) %C(dim white) %C(bold green)(%ar)%C(r) %C(bold yellow)%d%C(r)' --all | emojify | less -r"
+ alias migrate="python manage.py migrate"
+ alias migration="python manage.py makemigrations"
+ alias serve="python manage.py runserver"
  # Git Prompt Settings
  autoload -Uz vcs_info
  precmd_vcs_info() { vcs_info }
@@ -68,6 +65,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 plugins=(
     git
+    github
     archlinux 
     battery 
     colorize 
@@ -80,7 +78,8 @@ source $ZSH/oh-my-zsh.sh
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # neofetch
-neofetch
+#neofetch
+colorscript -e panes 
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.

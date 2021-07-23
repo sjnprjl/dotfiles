@@ -34,6 +34,7 @@ set nowritebackup
 set noundofile
 set nobackup
 set cursorline
+let mapleader = " "
 "set showtabline=2
 "set laststatus=2
 set termguicolors
@@ -159,6 +160,7 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+
 call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'jremmen/vim-ripgrep'
@@ -186,25 +188,78 @@ Plug 'tomtom/tlib_vim'
 Plug 'artanikin/vim-synthwave84'
 Plug 'Badacadabra/vim-archery'
 Plug 'honza/vim-snippets' 
-
+Plug 'junegunn/goyo.vim' 
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
+Plug 'joshdick/onedark.vim'
 
 call plug#end()
 
-let g:gruvbox_constrast_dark = 'hard'
-"let g:airline_theme = 'archery'
-if exists('+termguicolorsk')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum]"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum]"
-endif
-    let g:gruvbox_invert_selection='0'
-    colorscheme gruvbox 
-set background=dark     
-if executable('rg')
-    let g:rg_drive_root='true'
-endif
+nnoremap <Tab> gT
+nnoremap <S-Tab> gt
+
+let g:signify_sign_add               = '+'
+let g:signify_sign_delete            = '_'
+let g:signify_sign_delete_first_line = '‾'
+let g:signify_sign_change            = '~'
+
+let g:signify_sign_show_count = 0
+let g:signify_sign_show_text = 1
 
 
-let mapleader = " "
+"enable tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+
+" enable powerline fonts
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
+" Switch to your current theme
+let g:airline_theme = 'onedark'
+
+" Always show tabs
+set showtabline=2
+
+" We don't need to see things like -- INSERT -- anymore
+set noshowmode
+
+" default updatetime 4000ms is not good for async update
+set updatetime=100
+
+
+if (has("autocmd") && !has("gui_running"))
+    augroup colorset 
+        autocmd! 
+        let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16": "7" }
+        autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white })
+    augroup END
+endif
+
+colorscheme onedark 
+
+"let g:gruvbox_constrast_dark = 'hard'
+"if exists('+termguicolorsk')
+    "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum]"
+    "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum]"
+"endif
+    "let g:gruvbox_invert_selection='0'
+    "colorscheme gruvbox 
+"set background=dark     
+"if executable('rg')
+    "let g:rg_drive_root='true'
+"endif
+
+
 let g:netrw_browse_split=2
 let g:netrw_win_size = 25
 let g:netrw_banner=0
@@ -222,9 +277,19 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 nnoremap <silent> <Leader>gd :YcmCompleter GoTO<CR>
 nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
 
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-nnoremap <C-j> :tabprevious<CR>
-nnoremap <C-k> :tabnext<CR>
+function! s:show_documentation()
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	else
+		call CocAction('doHover')
+	endif
+endfunction
+
+map <leader>tt :term<CR>
+
 inoremap jk <ESC> 
 inoremap kj <ESC> 
 map <leader>pv :NERDTreeToggle<CR>
@@ -240,6 +305,8 @@ nnoremap <leader>m        :History<CR>
 :map <leader>a            :%y+<CR>
 :map <C-a>            :%y+<CR>
 
+"Git status
+nmap <leader>gs :Git<CR>
 
 autocmd BufRead *.c, *.h, *.cpp, *.cc setlocal cindent
 
