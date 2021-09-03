@@ -1,13 +1,29 @@
 source ~/.config/zsh/.zprofile
 
+export LC_ALL="en_US.UTF-8"
+export LANG=en_US.UTF-8
+
+autoload -U colors && colors
+
+autoload -Uz compinit
+compinit
+zmodload zsh/complist
+_comp_options+=(globdots)
+
+bindkey -v
+export KEYTIMEOUT=1
+
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'j' vi-down-line-or-history
+
 # Basic bash setting & themes
  export PATH=$PATH:$HOME/.bin
+ export PATH=$PATH:$HOME/.local/bin
  export PATH=$PATH:$HOME/coding/scripts/
  export PATH=/home/$USER/.config/nvcode/utils/bin:$PATH
- #path+='$HOME/.bin'
- #export PATH
  setopt no_list_ambiguous
- bindkey -v
 
  # Setting up Defaults
  export TERMINAL='kitty'
@@ -41,7 +57,8 @@ source ~/.config/zsh/.zprofile
  RPROMPT=\$vcs_info_msg_0_
  zstyle ':vcs_info:git:*' formats '%F{yellow}(%b)%r%f'
  zstyle ':vcs_info:*' enable git
-    
+
+   
 
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -58,7 +75,7 @@ themes=(
     "gozilla"
     "kennethreitz"
     )
-ZSH_THEME=$themes[11]
+ZSH_THEME=$themes[1]
 
 # VARIABLES
 ZSH_AUTOSUGGEST_USE_ASYNC=true
@@ -71,23 +88,33 @@ plugins=(
     colorize 
     django 
     gitfast 
-    zsh-autosuggestions
     zsh-syntax-highlighting
+    zsh-autosuggestions
 )
 source $ZSH/oh-my-zsh.sh
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # neofetch
 #neofetch
-colorscript -e panes 
+colors=(
+    panes
+    colorwheel
+    hex
+    crunchbang-mini
+    elfman
+)
+color=${colors[$RANDOM % ${#colors[@]} + 1 ]}
+#color=panes
+pfetch
+colorscript -e $color 
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-(cat ~/.cache/wal/sequences &)
+#(cat ~/.cache/wal/sequences &)
 
 # To add support for TTYs this line can be optionally added.
-source ~/.cache/wal/colors-tty.sh
+#source ~/.cache/wal/colors-tty.sh
 #neofetch --source ~/.config/neofetch/thumbnails/
 ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
 pasteinit() {
@@ -102,9 +129,6 @@ zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 ### Fix slowness of pastes
 
-autoload -Uz compinit
-compinit
-# Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
 
 ulimit -s unlimited
+bindkey -v

@@ -36,38 +36,35 @@ font:
     persistent_logging: false
 draw_bold_text_with_bright_colors: true
 
-# Color Settings (Gruvbox)
 colors:
+  # Default colors
   primary:
-    #background: '#0d1918'
-    #    background: '#1d2021'
-    background: '#191a1b'
-    foreground: '#ebdbb2'
+    background: '0x272822'
+    foreground: '0xf8f8f2'
 
+  # Normal colors
   normal:
-    black:   '#282828'
-    red:     '#cc241d'
-    green:   '#98971a'
-    yellow:  '#d79921'
-    blue:    '#458588'
-    magenta: '#b16286'
-    cyan:    '#689d6a'
-    white:   '#a89984'
+    black:   '0x272822'
+    red:     '0xf92672'
+    green:   '0xa6e22e'
+    yellow:  '0xf4bf75'
+    blue:    '0x66d9ef'
+    magenta: '0xae81ff'
+    cyan:    '0xa1efe4'
+    white:   '0xf8f8f2'
 
+  # Bright colors
   bright:
-    black:   '#928374'
-    red:     '#fb4934'
-    green:   '#b8bb26'
-    yellow:  '#fabd2f'
-    blue:    '#83a598'
-    magenta: '#d3869b'
-    cyan:    '#8ec07c'
-    white:   '#ebdbb2'
+    black:   '0x75715e'
+    red:     '0xf92672'
+    green:   '0xa6e22e'
+    yellow:  '0xf4bf75'
+    blue:    '0x66d9ef'
+    magenta: '0xae81ff'
+    cyan:    '0xa1efe4'
+    white:   '0xf9f8f5'
 
-  selection:
-    text: '0xffffff'
-    background: '0xdc3232'
-    white:   '0xffffff'
+
 cursor:
   style: Block
   unfocused_hollow: true

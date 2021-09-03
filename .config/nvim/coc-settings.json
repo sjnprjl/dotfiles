@@ -16,7 +16,6 @@
         "php", 
         "java", 
         "python"
-        
     ], 
     "diagnostic.checkCurrentLine": false,
     "tsserver.npm": "/usr/local/bin/npm",

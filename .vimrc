@@ -1,9 +1,5 @@
 " init autocmd
 autocmd!
-" set script encoding
-scriptencoding utf-8
-" stop loading config if it is on tiny or small
-" if !1 | finish | endif
 
 set encoding=utf-8
 set nocompatible
@@ -35,15 +31,16 @@ set noundofile
 set nobackup
 set cursorline
 let mapleader = " "
+
+
+" set script encoding
+scriptencoding utf-8
+" stop loading config if it is on tiny or small
+" if !1 | finish | endif
+
 "set showtabline=2
 "set laststatus=2
 set termguicolors
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
 syntax enable
 set colorcolumn=80
 highlight ColorColoumn ctermbg=0  guibg=lightgrey
@@ -184,7 +181,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-"Plug 'garbas/vim-snipmate'
+Plug 'SirVer/ultisnips'
 Plug 'artanikin/vim-synthwave84'
 Plug 'Badacadabra/vim-archery'
 Plug 'honza/vim-snippets' 
@@ -202,6 +199,9 @@ call plug#end()
 
 nnoremap <Tab> gT
 nnoremap <S-Tab> gt
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-l>"
 
 let g:signify_sign_add               = '+'
 let g:signify_sign_delete            = '_'
@@ -272,8 +272,10 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 ""nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>ps :Rg<SPACE>
-nnoremap <silent> <leader>+ :vertical resize +5<CR>
-nnoremap <silent> <leader>- :vertical resize -5<CR>
+nnoremap <silent> <leader>jl :vertical resize +3<CR>
+nnoremap <silent> <leader>jh  :vertical resize -3<CR>
+nnoremap <silent> <leader>jj  :resize +3<CR>
+nnoremap <silent> <leader>jk  :resize -3<CR>
 nnoremap <silent> <Leader>gd :YcmCompleter GoTO<CR>
 nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
 
@@ -305,6 +307,13 @@ nnoremap <leader>m        :History<CR>
 :map <leader>a            :%y+<CR>
 :map <C-a>            :%y+<CR>
 
+autocmd filetype java nnoremap <F5> :w <BAR> !javac % && java % <CR>
+
+
+
+command! W :w
+
+
 "Git status
 nmap <leader>gs :Git<CR>
 
@@ -319,8 +328,14 @@ autocmd BufRead *.c, *.h, *.cpp, *.cc setlocal cindent
 let &t_ut=''
 let g:user_emmet_leader_key = ','
 
+
+
+
 autocmd FileType scss setl iskeyword+=@-@
 augroup cppp
     autocmd!
     autocmd BufNewFile *.cpp 0r $HOME/coding/templates.cpp 
 augroup END
+autocmd BufNewFile *.sh 0r!bash ~/Templates/bash_templates.sh
+
+

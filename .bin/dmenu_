@@ -1,0 +1,19 @@
+#!/usr/bin/bash
+
+. ~/colors.sh
+
+BG=$BACKGROUND
+FG=$FOREGROUND
+SELECTED_BG=$GREEN
+SELECTED_FG=$BLACK
+PROMPT="🚀"
+FONT="Source Code Variable"
+
+arg=$1
+if [[ $arg == '-c' ]]; then
+    dmenu_common
+else
+    dmenu_run -p "$PROMPT" -fn "$FONT" -nb $BG -nf $FG -sb $SELECTED_BG -sf $SELECTED_FG 
+fi
+
+

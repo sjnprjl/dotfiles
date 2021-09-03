@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
-
 echo 'Updating Applications...'
     yay -Syu
-echo ' ' 
-echo 'Cleaning caches & directories...'
-    pacman -Sc
-    yay -Sc
-
 echo ' ' 
 echo 'Updating Complete!'

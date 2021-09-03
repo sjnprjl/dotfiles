@@ -1,4 +1,0 @@
-#!/bin/bash
-FILE=$1
-OUTPUT=$(echo $FILE | cut -d. -f1)
-g++ -std=c++11 -O2 -Wall $FILE -o $OUTPUT

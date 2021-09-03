@@ -1,18 +1,37 @@
+#since i use dvorak key map. somehow, sxhkd is using that layout instead of
+#qwerty,which is odd cause all was fine before it get all messed up 😦
+
+
 
 # terminal emulator
 super + Return
-    kitty
+    $TERMINAL
+
+super + b 
+    books.sh
 
 # program launcher
-super + d
-    rofi-launcher
+super + shift + g
+    dmenu_
 
-# open chrome 
-super + e 
+#super cool dmenu shortcuts
+super + shift + c
+    dmenu_ -c
+    
+super + shift + f 
+    font-preview.sh
+
+#google chrome
+super + period
     google-chrome-stable
-#change polybar 
-super + t
-    $HOME/.config/theme-manager-bspwm/scripts/change-polybar-theme
+
+#toggle notion-app
+super + p
+    scratchpad.sh notion-app --take-first
+super + a
+    scratchpad.sh Alacritty alacritty
+super + d
+    scratchpad.sh discord discord
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -36,9 +55,6 @@ XF86MonBrightnessDown
     xbacklight -dec 10
 XF86MonBrightnessUp
     xbacklight -inc 10
-#
-# bspwm hotkeys
-#
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -57,39 +73,21 @@ super + m
 super + {_, shift +} n
     {shownode, hidenode}
 
-# send the newest marked node to the newest preselected node
-#super + y
-	#bspc node newest.marked.local -n newest.!automatic.local
-
 # swap the current node and the biggest window
 super + g
 	bspc node -s biggest.window
 
 #
-# state/flags
-#
-
-# set the window state
-#super + {t,shift + t,s,f}
-	#bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-# set the node flags
-#super + ctrl + {m,x,y,z}
-	#bspc node -g {marked,locked,sticky,private}
-
-#
 # focus/swap
 #
 
-# focus the node in the given direction
-#super + {_,shift + }{h,j,k,l}
-	#bspc node -{f,s} {west,south,north,east}
+ ##focus the node in the given direction
+#super + {h,j,k,l}
+    #bspc node -f {west,south,north,east}
+
 # rotate windows
-super + shift + {j,k} 
+super + shift + {h,t} 
     bspc node @/ -C {forward, backward}
-# focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
 super + {_,shift + }Tab
@@ -103,11 +101,6 @@ super + bracket{left,right}
 super + ctrl + {grave,Tab}
 	bspc {node,desktop} -f last
 
-# focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
@@ -123,9 +116,9 @@ ctrl + alt + {Left,Right}
 super + space
     bspc node -t "~"{floating,tiled}
 
-# Pseudo Tiled & tiled mode
-super + {p,t}
-    bspc node -t {pseudo_tiled,tiled}
+#Pseudo Tiled & tiled mode
+#super + {p,t}
+    #bspc node -t {pseudo_tiled,tiled}
 
  #preselect the direction
 super + ctrl + {h,j,k,l}
@@ -164,14 +157,14 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-100 0,0 100,0 -100,100 0}
 
  # Expand/contract a window by moving one of its side outward/inward
-super + s : {h,j,k,l}
+super + o : {h,j,k,l}
     STEP=20; SELECTION={1,2,3,4}; \
    bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
     bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)   
 
-# Show help
-super + slash
-    sxhkd-help
+ #Show help
+#super + slash
+    #sxhkd-help
 
 # Change wallpaper
 super + c

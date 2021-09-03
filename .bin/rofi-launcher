@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-. "$HOME/.config/theme-manager-bspwm/conf"
-bash $HOME/.config/rofi/launchers/colorful/launcher.sh $RTHEME
-
-

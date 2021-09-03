@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-wp_path=$HOME/.wallpapers/
-image=$(ls $wp_path | grep -E '(jpg|png)$' | sort -R | tail -1)
-wal -c
-. "$HOME/.config/theme-manager-bspwm/conf"
-bash $HOME/.config/polybar/scripts/pywal.sh $PTHEME $wp_path/$image
-cp $wp_path/$image $HOME/.wall
+wp_path=$HOME/.wallpapers
+wallpaper=$(shuf -n1 -e $wp_path/*)
+feh --bg-scale $wallpaper
+
+
 
