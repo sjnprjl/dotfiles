@@ -17,12 +17,11 @@ getcolors () {
 xrdb ~/.Xresources
 getcolors
 
+xsetroot -cursor_name left_ptr
 
-mult-mon
 
-
-bspc monitor eDP-1 -d 'I' 'II' 'III' 'IV' 
-bspc monitor HDMI-1 -d 'V' 'VI' 'VII' 'VIII'
+bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 &
+autostart.sh
 bspc config focus_follows_pointer true
 bspc config border_width 4
 bspc config window_gap 5
@@ -51,10 +50,11 @@ bspc config focus_follows_pointer   true
 #Remove all rule first
 bspc rule -r *:*
 
-bspc rule -a kitty follow=on state=tiled center=true
+bspc rule -a kitty follow=off state=tiled center=true
 bspc rule -a Alacritty follow=on state=floating center=true
 bspc rule -a notion-app follow=on state=floating center=true
 bspc rule -a discord state=floating follow=on center=true
+bspc rule -a google-chrome-stable follow=off
 
 #reset padding before polybar
 #bspc config top_padding 10

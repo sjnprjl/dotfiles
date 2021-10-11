@@ -10,6 +10,10 @@ super + Return
 super + b 
     books.sh
 
+# screenshot
+super + s
+    flameshot;flameshot gui
+
 # program launcher
 super + shift + g
     dmenu_

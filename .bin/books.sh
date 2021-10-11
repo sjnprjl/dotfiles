@@ -14,7 +14,17 @@ if [[ ! -f "/bin/dmenu" ]]; then
     echo "Need dmenu."
     exit 0
 fi
+if [[ ! -f "/bin/zathura" ]]; then 
+    notify-send "You need zathura document viewer."
+    echo "Zathura needed. Install the package"
+    exit 0
+fi
 DIR=$HOME/.books
+if [[ ! -d $DIR ]]; then 
+    echo "Please create a directory $DIR"
+    exit
+fi
+
 hmm=$(ls $DIR | dmenu -l 10 -p "List of Books Maybe " -i)
 if [[ ! -z $hmm ]]; then 
     zathura "$DIR/$hmm"

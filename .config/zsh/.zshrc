@@ -49,6 +49,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
  alias migrate="python manage.py migrate"
  alias migration="python manage.py makemigrations"
  alias serve="python manage.py runserver"
+ alias lal="ls -lah | lolcat"
  # Git Prompt Settings
  autoload -Uz vcs_info
  precmd_vcs_info() { vcs_info }
@@ -75,7 +76,7 @@ themes=(
     "gozilla"
     "kennethreitz"
     )
-ZSH_THEME=$themes[1]
+ZSH_THEME=$themes[3]
 
 # VARIABLES
 ZSH_AUTOSUGGEST_USE_ASYNC=true
@@ -106,7 +107,8 @@ colors=(
 color=${colors[$RANDOM % ${#colors[@]} + 1 ]}
 #color=panes
 pfetch
-colorscript -e $color 
+#colorscript -e $color 
+colorscript -r
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.

@@ -312,6 +312,7 @@ autocmd filetype java nnoremap <F5> :w <BAR> !javac % && java % <CR>
 
 
 command! W :w
+command! Wq :wq
 
 
 "Git status
@@ -332,10 +333,6 @@ let g:user_emmet_leader_key = ','
 
 
 autocmd FileType scss setl iskeyword+=@-@
-augroup cppp
-    autocmd!
-    autocmd BufNewFile *.cpp 0r $HOME/coding/templates.cpp 
-augroup END
 autocmd BufNewFile *.sh 0r!bash ~/Templates/bash_templates.sh
 
 
