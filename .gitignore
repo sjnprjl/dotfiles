@@ -30,8 +30,6 @@
 .config/mimeapps.list
 .config/notion-app/
 .config/pfetch.conf
-.config/polybar/config
-.config/polybar/launch
 .config/pulse/
 .config/smplayer/*
 .config/teams/

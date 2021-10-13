@@ -8,9 +8,12 @@
 ##          _/ |/ |                 
 ##         |__/__/                  
 ## Sun Oct 10 01:33:50 PM +0545 2021
-## SIMPLE SCRIPT TO RUN comnet on linux
+## SIMPLE SCRIPT TO RUN comnet III on linux
 #sudo sysctl -w vm.mmap_min_addr=0       
-cd ~/.wine/my-comnet-bottle/drive_c/Program\ Files/COMNET\ III
-WINEARCH=win32 WINEPREFIX=~/.wine/my-comnet-bottle wine comnet.exe
+pkill wine
+cd $HOME/.wine/vodka/drive_c/Program\ Files/COMNET\ III
+WINEARCH=win32 WINEPREFIX=~/.wine/vodka wine comnet.exe
+
+
 
 
