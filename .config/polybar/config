@@ -71,7 +71,7 @@ font-5 = Font Awesome 5 Brands:pixelsize=12;2
 
 modules-left = launcher bspwm  xwindow
 modules-center = time 
-modules-right = cpu memory wlan battery pulseaudio
+modules-right = checkupdate cpu memory wlan battery pulseaudio
 
 scroll-up = bspwn-wsnext
 scroll-down = bspwn-wsprev
@@ -101,6 +101,15 @@ type = custom/text
 content = "[  ]"
 content-foreground=${colors.color3}
 content-padding = 0.1
+
+[module/checkupdate]
+type = custom/script
+exec = ~/.config/polybar/scripts/check-update.sh
+format-prefix = "[ "
+format-suffix = " ]"
+;format-foreground = ${colors.color3}
+interval = 3600
+click-left = kitty sh -c "a-update; read"
 
 
 [module/xwindow]
