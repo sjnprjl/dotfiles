@@ -55,6 +55,7 @@ bspc rule -a Alacritty follow=on state=floating center=true
 bspc rule -a notion-app follow=on state=floating center=true
 bspc rule -a discord state=floating follow=on center=true
 bspc rule -a google-chrome-stable follow=off
+bspc rule -a xdman-Main state=floating center=true
 
 #reset padding before polybar
 #bspc config top_padding 10
