@@ -25,17 +25,17 @@ hex=$GREEN
 if ((  $avail >= $peak )); then
     hex=$RED
     icon=""
-    msg="You really need to maintain your update."
+    msg="Please update your system:("
 elif (( $avail >= $critical )); then 
     hex=$YELLOW
     icon=""
-    msg="It is a update time!!"
+    msg="Maintain your system:/"
 fi
 
 color="%{F$hex}"
 echo "$color $icon $avail updates available%{F-}"
 if (( $avail >= $critical )); then 
-    notify-send -t 4000 -u critical "Update reminder" "$msg"
+    notify-send -t 10000 -u critical "UPDATE!!!" "$msg"
 fi
 
 
