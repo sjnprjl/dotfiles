@@ -7,8 +7,13 @@
 super + Return
     $TERMINAL
 
+# display books list
 super + b 
     books.sh
+
+#lockscreen
+super + l
+    betterlockscreen -l dimblur
 
 # screenshot
 super + s
@@ -43,7 +48,8 @@ super + Escape
 
 #mute volume
 XF86AudioMute
-    amixer set 'Master' toggle
+    amixer set 'Master' toggle; amixer get Master | grep '\[off\]' &&  notify-send -t 1000 -u low 'Reminder' "You have been muted."
+
 #increase volume
 XF86AudioLowerVolume
     amixer set 'Master' 1%- unmute
