@@ -1,4 +1,7 @@
 # dotfiles
+## Screenshot
+![screenshot](screenshot.png)
+
 Not much. Just my dotfiles getting in my way...
 > Haven't maintained well.
 > Will try to make it more usable(some other day).

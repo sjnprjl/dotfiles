@@ -106,9 +106,9 @@ colors=(
 )
 color=${colors[$RANDOM % ${#colors[@]} + 1 ]}
 #color=panes
-pfetch
+pfetch | lolcat
 #colorscript -e $color 
-colorscript -r
+#colorscript -r
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
@@ -133,4 +133,4 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 
 ulimit -s unlimited
-bindkey -v
+#bindkey -v
