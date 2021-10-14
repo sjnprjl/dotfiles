@@ -11,29 +11,35 @@
 
 source ~/colors.sh
 
-avail=$(checkupdates | wc -l)
+avail=$(checkupdates 2>/dev/null | wc -l)
 
 low=20
 critical=100
 peak=200
 msg=""
 
-icon=""
+icon="﯑"
 
-hex=$GREEN
+#icon=""
+
+hex=$WHITE
+icon_hex=$c15
 
 if ((  $avail >= $peak )); then
     hex=$RED
-    icon=""
+    #icon=""
     msg="Please update your system:("
 elif (( $avail >= $critical )); then 
     hex=$YELLOW
-    icon=""
+    icon=""
+    #icon=""
     msg="Maintain your system:/"
 fi
 
 color="%{F$hex}"
-echo "$color $icon $avail updates available%{F-}"
+icon_color="%{F$icon_hex}"
+end="%{F-}"
+echo "$icon_color $icon $end$color$avail updates available$end"
 if (( $avail >= $critical )); then 
     notify-send -t 10000 -u critical "UPDATE!!!" "$msg"
 fi

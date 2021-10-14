@@ -41,15 +41,8 @@ wmname compiz
 #set wallpaper on init 🚀
 bash ~/.fehbg
 
-
-#initiate polybar
-bash ~/.config/polybar/launch &
-
 #set keyboard layot to dvorak ⌨
 setxkbmap dvorak
-
-#start picom
-picom -b
 
 #simple x hot key daemon
 sxhkd -m 1 &
