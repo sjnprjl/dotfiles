@@ -10,7 +10,6 @@ compinit
 zmodload zsh/complist
 _comp_options+=(globdots)
 
-bindkey -v
 export KEYTIMEOUT=1
 
 bindkey -M menuselect 'h' vi-backward-char
@@ -131,6 +130,7 @@ zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 ### Fix slowness of pastes
 
+bindkey -v
 
 ulimit -s unlimited
 #bindkey -v
