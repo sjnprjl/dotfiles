@@ -4,7 +4,7 @@
 .config/default/
 .config/gtk-2.0/
 .config/gtk-3.0/
-.config/nvim/plugged
+.config/nvim/plugged/
 .colors/
 .config/GIMP/
 .config/Kingsoft/
@@ -36,4 +36,5 @@
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/xfce4/
-.config/zsh/.zcompdump-sboob-5.8
+.config/zsh/.zcompdump-*
+.config/zsh/.zcompdump
