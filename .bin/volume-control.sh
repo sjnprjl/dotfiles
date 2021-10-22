@@ -12,7 +12,7 @@
 notify() {
     icon="~/icons/volume/volume-$1.png"
     summary="$2"
-    dunstify -i "$icon" -r 9999 "$summary" 
+    dunstify -i "$icon" -r 5555 "$summary" 
 }
 get_volume() {
     awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master) | sed 's/%//'
