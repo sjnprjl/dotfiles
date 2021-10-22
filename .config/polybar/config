@@ -67,7 +67,7 @@ font-3 = unifont:fontformat=truetype:size=14:antialias=false;0
 
 modules-left = sepl launcher sepr sepl bspwm sepr sepl xwindow sepr
 modules-center = sepl time  sepr
-modules-right = sepl checkupdate sepr sepl cpu sepr sepl memory sepr sepl wlan sepr sepl battery sepr sepl pulseaudio sepr
+modules-right = sepl checkupdate sepr sepl cpu sepr sepl memory sepr sepl wlan sepr sepl backlight sepr sepl pulseaudio sepr
 
 scroll-up = bspwn-wsnext
 scroll-down = bspwn-wsprev
@@ -283,6 +283,39 @@ label-font = 1
 ; ramp-capacity-3-underline = ${colors.tertiary}
 ; ramp-capacity-4-underline = ${colors.tertiary}
 
+[module/backlight]
+;https://github.com/jaagr/polybar/wiki/Module:-backlight
+
+type = internal/backlight
+
+; Use the following command to list available cards:
+; $ ls -1 /sys/class/backlight/
+card = intel_backlight
+
+; Available tags:
+;   <label> (default)
+;   <ramp>
+;   <bar>
+format = <ramp>
+format-foreground = ${colors.color15}
+format-background = ${colors.background}
+
+; Available tokens:
+;   %percentage% (default)
+label = %percentage%%
+
+; Only applies if <ramp> is used
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+; Only applies if <bar> is used
+bar-width = 10
+bar-indicator = |
+bar-fill = ─
+bar-empty = ─
 
 [settings]
 screenchange-reload = true

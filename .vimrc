@@ -71,6 +71,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'SirVer/ultisnips'
 Plug 'artanikin/vim-synthwave84'
 Plug 'Badacadabra/vim-archery'
+Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets' 
 Plug 'junegunn/goyo.vim' 
 if has('nvim') || has('patch-8.0.902')

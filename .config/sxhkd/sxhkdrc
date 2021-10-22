@@ -34,6 +34,9 @@ super + shift + f
 super + period
     google-chrome-stable
 
+super + shift + p
+    pgrep picom && pkill picom || picom -b
+
 #toggle notion-app
 super + p
     scratchpad.sh notion-app --take-first
@@ -48,23 +51,20 @@ super + Escape
 
 #mute volume
 XF86AudioMute
-    amixer set 'Master' toggle; amixer get Master | grep '\[off\]' &&  notify-send -t 1000 -u low 'Reminder' "You have been muted."
+    volume-control.sh mute
 
 #increase volume
 XF86AudioLowerVolume
-    amixer set 'Master' 1%- unmute
+    volume-control.sh down 1
 #decrease volem
 XF86AudioRaiseVolume
-    amixer set 'Master' 1%+ unmute
-#increase/decrease volume
-alt + {Up, Down}
-    amixer set 'Master' {1%+, 1%-} unmute
+    volume-control.sh up 1
     
 #brightness adjust
 XF86MonBrightnessDown
-    xbacklight -dec 10
+    bright-control.sh down 5
 XF86MonBrightnessUp
-    xbacklight -inc 10
+    bright-control.sh up 5
 
 # quit/restart bspwm
 super + alt + {q,r}
