@@ -30,7 +30,6 @@ bindkey -M menuselect 'j' vi-down-line-or-history
  export WALLPAPERS='$HOME/.wallpapers'
 
  # Aliases
- alias tcli='transmission-cli'
  alias v='nvim'
  alias vi='nvim'
  alias f='ranger'
@@ -41,14 +40,9 @@ bindkey -M menuselect 'j' vi-down-line-or-history
  alias lla='ls -a'
  alias htdocs='cd /opt/lampp/htdocs'
  alias sn='shutdown now'
- alias vol='~/.bin/speaker-volume' 
  alias clock='tty-clock -c -s'
- alias repo='cd ~/Repo/dotfiles'
  alias lg="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(red)%h%C(r) —— %C(bold blue)%an%C(r): %C(white)%s%C(r) %C(dim white) %C(bold green)(%ar)%C(r) %C(bold yellow)%d%C(r)' --all | emojify | less -r"
- alias migrate="python manage.py migrate"
- alias migration="python manage.py makemigrations"
- alias serve="python manage.py runserver"
- alias lal="ls -lah | lolcat"
+ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
  # Git Prompt Settings
  autoload -Uz vcs_info
  precmd_vcs_info() { vcs_info }
