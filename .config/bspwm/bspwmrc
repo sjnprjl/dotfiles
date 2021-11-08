@@ -63,7 +63,7 @@ bspc rule -a xdman-Main state=floating center=true
 
 #exec dunst daemon
 dunst \
--geom "300x5-30+20" -frame_width "1" -font "Source Code Variable 11" \
+-geom "300x5-30+20" -frame_width "1" -font "Source Code Variable 10" \
 -lb "$BACKGROUND" -lf "$FOREGROUND" -lfr "$GREEN" \
 -nb "$BACKGROUND" -nf "$FOREGROUND" -nfr "$BLUE" \
 -cb "$BACKGROUND" -cf "$FOREGROUND" -cfr "$RED" &

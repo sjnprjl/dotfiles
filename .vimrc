@@ -49,46 +49,29 @@ call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-eunuch'
-Plug 'vim-utils/vim-man'
 Plug 'lyuts/vim-rtags'
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/promptline.vim'
 Plug 'junegunn/fzf', {'do': { -> fzf#install()}}
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter'
-Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
 Plug 'SirVer/ultisnips'
-Plug 'artanikin/vim-synthwave84'
-Plug 'Badacadabra/vim-archery'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets' 
-Plug 'junegunn/goyo.vim' 
 if has('nvim') || has('patch-8.0.902')
   Plug 'mhinz/vim-signify'
 else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
-Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 Plug 'joshdick/onedark.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
-nnoremap <Tab> gT
-nnoremap <S-Tab> gt
 
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
@@ -106,6 +89,7 @@ let g:signify_sign_show_count = 0
 let g:signify_sign_show_text = 1
 
 
+let g:snipMate = { 'snippet_version' : 1 }
 
 
 if (has("autocmd") && !has("gui_running"))
@@ -124,24 +108,17 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
-""nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>ps :Rg<SPACE>
-nnoremap <silent> <leader>jl :vertical resize +3<CR>
-nnoremap <silent> <leader>jh  :vertical resize -3<CR>
-nnoremap <silent> <leader>jj  :resize +3<CR>
-nnoremap <silent> <leader>jk  :resize -3<CR>
 nnoremap <silent> <Leader>gd :YcmCompleter GoTO<CR>
 nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
 
 
 map <leader>tt :term<CR>
 
-
 inoremap jk <ESC> 
-inoremap kj <ESC
+inoremap kj <ESC>
 
 
-" Eliminating ex mode as it is irritating
 nnoremap Q q:
 
 
@@ -149,7 +126,6 @@ nnoremap Q q:
 map <C-a>            :%y+<CR>
 
 
-" some write/exit command
 command! W :w
 command! Wq :wq
 command! Wqall :wqall

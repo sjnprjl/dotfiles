@@ -12,7 +12,7 @@
 #sudo sysctl -w vm.mmap_min_addr=0       
 pkill wine
 cd $HOME/.wine/vodka/drive_c/Program\ Files/COMNET\ III
-WINEARCH=win32 WINEPREFIX=~/.wine/vodka wine comnet.exe
+env WINEARCH=win32 WINEPREFIX=~/.wine/vodka wine comnet.exe
 
 
 

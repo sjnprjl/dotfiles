@@ -18,16 +18,8 @@
         "python"
     ], 
     "diagnostic.checkCurrentLine": false,
-    "tsserver.npm": "/usr/local/bin/npm",
-    "javascript.referencesCodeLens.enable": false,
-    "javascript.implementationsCodeLens.enable": false,
-    "typescript.referencesCodeLens.enable": false,
-    "typescript.implementationsCodeLens.enable": false, 
     "python.formatting.provider": "autopep8", 
+    "python.formatting.autopep8Path": "/home/sboob/.local/bin/autopep8", 
     "python.formatting.autopep8Args": ["--aggressive",  "--aggressive"], 
-    "python.linting.flake8Enabled": true, 
-    "python.jediEnabled": true, 
-    "python.analysis.diagnosticEnabled": true, 
-    "python.autoComplete.extraPaths": []
-
+    "python.linting.flake8Enabled": true
 }
