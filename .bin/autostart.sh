@@ -50,12 +50,4 @@ else
     monitor_remove
 fi
 
-# wallpaper
-. $HOME/.fehbg
-
-#initiate polybar
-bash ~/.config/polybar/launch &
-
-#start picom
-picom -b
 
