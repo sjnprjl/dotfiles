@@ -14,17 +14,20 @@ notify() {
     summary="$2"
     dunstify -i "$icon" -r 5555 "$summary" 
 }
+get_useful() {
+    amixer sget Master | tail -n 1
+}
 get_volume() {
-    awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master) | sed 's/%//'
+    echo $(get_useful) | awk -F "[][]" '{print $2}'
 }
 is_mute() {
-    amixer sget Master | grep '\[off\]'
+    echo $(get_useful) | awk -F "[][]" '{print $4}' | grep 'off'
 }
 
 display_noti() {
     icon=""
     current_volume=$(get_volume)
-    summary="Volume $current_volume% "
+    summary="Volume $current_volume "
     if [[ $(is_mute) ]]; then 
         icon="mute"
         summary="You have been muted."
