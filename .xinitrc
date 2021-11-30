@@ -23,23 +23,12 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-#ENVIRONMENT VARIABLES
-export AWT_TOOLKIT=MToolkit
-export _JAVA_AWT_WM_NONREPARENTING=1
-export JDK_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-export _JAVA_OPTIONS='-Dsun.java2d.opengl=true'
 
-SILENT_JAVA_OPTIONS="$JDK_JAVA_OPTIONS"
-unset JDK_JAVA_OPTIONS
-alias java='java "$SILENT_JAVA_OPTIONS"'
-
+source $HOME/.xprofile
 
 killall -9 sxhkd dunst picom
 
 wmname compiz
-
-#set wallpaper on init 🚀
-bash ~/.fehbg
 
 #set keyboard layot to dvorak ⌨
 setxkbmap dvorak
@@ -47,7 +36,7 @@ setxkbmap dvorak
 #simple x hot key daemon
 sxhkd -m 1 &
 
-# Start Awesome WM 😈 
+# start bspwm
 exec bspwm
 
 systemctl --user import-environment DISPLAY
