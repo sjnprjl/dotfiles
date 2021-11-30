@@ -1,37 +1,43 @@
+!Gloabl Setting {{{
 ! special
-*.foreground:   #c0c5ce
-*.background:   #2b303b
-*.cursorColor:  #c0c5ce
+*.foreground:   #c6cdd0
+*.background:   #0d0e0f
+*.cursorColor:  #c6cdd0
 
 ! black
-*.color0:       #2b303b
-*.color8:       #65737e
+*.color0:       #161818
+*.color8:       #eaaf8d
 
 ! red
-*.color1:       #bf616a
-*.color9:       #bf616a
+*.color1:       #1f2121
+*.color9:       #aa8be7
 
 ! green
-*.color2:       #a3be8c
-*.color10:      #a3be8c
+*.color2:       #303233
+*.color10:      #e69ac1
 
 ! yellow
-*.color3:       #ebcb8b
-*.color11:      #ebcb8b
+*.color3:       #47494b
+*.color11:      #5092a4
 
 ! blue
-*.color4:       #8fa1b3
-*.color12:      #8fa1b3
+*.color4:       #636769
+*.color12:      #e16fae
 
 ! magenta
-*.color5:       #b48ead
-*.color13:      #b48ead
+*.color5:       #868b8d
+*.color13:      #c7b5f0
 
 ! cyan
-*.color6:       #96b5b4
-*.color14:      #96b5b4
+*.color6:       #aeb5b7
+*.color14:      #b7a4e2
 
 ! white
-*.color7:       #c0c5ce
-*.color15:      #eff1f5
+*.color7:       #dfe3e4
+*.color15:      #6cb096
 
+!}}}
+Xft.dpi:        96
+
+
+! vim: set foldmethod=marker:
