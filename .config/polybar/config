@@ -45,11 +45,11 @@ color15 = ${xrdb:color15}
 [bar/bar]
 enable-ipc=true
 height = 30
-width = 98%
-offset-y = 5
+width = 100%
+offset-y = 0
 fixed-center = true
-offset-x = 1%
-radius = 10.0
+offset-x = 0
+;radius = 1.0
 
 
 background = ${colors.background}
@@ -58,10 +58,8 @@ foreground = ${colors.foreground}
 border-bottom-size = 2
 
 padding=4
-font-0 = Fira Code:size=9;1
-font-1 = "FontAwesome:size=9:antialias=false;2"
-font-2 = Hurmit Nerd Font:size=10;1
-font-3 = unifont:fontformat=truetype:size=14:antialias=false;0
+font-0 = CaskaydiaCove Nerd Font:size=9;1
+font-1 = Noto Color Emoji;size=9;1
 
 
 
@@ -117,7 +115,8 @@ label-background = ${colors.background}
 
 [module/sepl]
 type = custom/text
-content = "[ "
+content = " ["
+label-font = 1
 content-padding = 1
 
 [module/sepr]
@@ -180,7 +179,7 @@ label-connected-foreground = ${colors.color7}
 format-disconnected = <label-disconnected>
 format-disconnected-margin = 2
 ;format-disconnected-foreground = ${colors.color7}
-label-disconnected = 睊offline
+label-disconnected = 睊 offline
 format-disconnected-foreground = ${colors.color7}
 label-disconnected-foreground = ${colors.color15}
 
@@ -215,7 +214,7 @@ ramp-volume-foreground = ${colors.color15}
 
 
 ;format-muted-padding = 2
-label-muted = " mute"   
+label-muted = "  mute"   
 label-muted-foreground = ${colors.color7}
 
 [module/battery]

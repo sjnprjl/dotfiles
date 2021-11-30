@@ -13,7 +13,7 @@
 send_noti() {
     icon="$HOME/icons/brightness/brightness.png"
     brightness=$(xbacklight -get)
-    dunstify -i "$icon" -r 5555 -u normal "Brightness $brightness"
+    dunstify -i "$icon" -r 5555 -u normal "Brightness ${brightness%.*}%"
 }
 
 case $1 in 
