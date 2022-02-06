@@ -44,6 +44,9 @@ bspc rule -a notion-app follow=on state=floating center=true
 bspc rule -a discord state=floating follow=on center=true
 bspc rule -a google-chrome-stable follow=off
 bspc rule -a xdman-Main state=floating center=true
+bspc rule -a xpad state=floating center=true follow=true
+
+bspc rule -a Zotero state=floating
 
 
 # wallpaper
@@ -54,6 +57,9 @@ bash $HOME/.config/polybar/launch &
 
 #start picom
 picom -b
+
+#flameshot
+flameshot&
 
 #exec dunst daemon
 DUNST_DIR=$HOME/.config/dunst

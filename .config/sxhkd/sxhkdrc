@@ -12,14 +12,15 @@ super + l
 
 # screenshot
 super + s
-    flameshot;flameshot gui
+    flameshot gui
+
+# notes
+super + o
+    xpad -t
 
 # program launcher
 super + shift + g
     dmenu_
-
-super + shift + f 
-    font-preview.sh
 
 #browser
 super + period
@@ -31,8 +32,11 @@ super + shift + p
 #toggle notion-app
 super + p
     scratchpad.sh notion-app --take-first
-super + a
-    scratchpad.sh Alacritty alacritty
+
+#libreoffice
+super + w
+    libreoffice
+
 super + d
     scratchpad.sh discord discord
 
@@ -78,6 +82,8 @@ super + {_, shift +} n
 super + g
 	bspc node -s biggest.window
 
+super + t
+    shownode --toggle
 #
 # focus/swap
 #
@@ -158,10 +164,10 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-100 0,0 100,0 -100,100 0}
 
  # Expand/contract a window by moving one of its side outward/inward
-super + o : {h,j,k,l}
-    STEP=20; SELECTION={1,2,3,4}; \
-   bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
-    bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)   
+# super + o : {h,j,k,l}
+#     STEP=20; SELECTION={1,2,3,4}; \
+#    bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
+#     bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)   
 
 # Change wallpaper
 super + c

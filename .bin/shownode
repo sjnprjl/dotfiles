@@ -1,7 +1,23 @@
 #!/usr/bin/env bash
 
 #. "$HOME/.config/theme-manager-bspwm/conf"
-SDIR="$HOME/.config/rofi/launchers/text/"
+# SDIR="$HOME/.config/rofi/launchers/text/"
+
+file="/tmp/window_info"
+
+node_info() {
+    cat $file | head -n 1
+}
+
+toggle() {
+    if test -f $file; then
+        bspc node $(node_info) -g hidden=off
+    fi
+}
+if [[ $1 == "--toggle" ]]; then
+    toggle
+    exit
+fi
 
 windows=($(bspc query -N -n .window.hidden))                                                
 index=$(for i in "${!windows[@]}"; do printf "%s %s |" $i "$(xtitle ${windows[i]})"; done) 

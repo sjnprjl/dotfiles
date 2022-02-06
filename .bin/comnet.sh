@@ -9,10 +9,17 @@
 ##         |__/__/                  
 ## Sun Oct 10 01:33:50 PM +0545 2021
 ## SIMPLE SCRIPT TO RUN comnet III on linux
-sudo sysctl -w vm.mmap_min_addr=0       
-pkill wine
-cd $HOME/.wine/vodka/drive_c/Program\ Files/COMNET\ III
-env WINEARCH=win32 WINEPREFIX=~/.wine/vodka wine comnet.exe
+already_runnig=$(pgrep wine)
+comnet_dir="~/.wine/drive_c/Program\ Files\ \(x86\)/COMNET\ III/data"
+executable="comnet.exe"
+if [[ $already_runnig ]]; then 
+    notify-send "Comnet is already running."
+    exit
+fi
+cd $comnet_dir
+sudo sysctl -q -w vm.mmap_min_addr=0       
+wine $executable 
+exit
 
 
 

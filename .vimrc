@@ -7,3 +7,7 @@ set shiftwidth=4
 
 set backspace=2
 colorscheme murphy
+
+imap jk <ESC>
+imap kj <ESC>
+
