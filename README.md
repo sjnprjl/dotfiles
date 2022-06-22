@@ -3,18 +3,6 @@
 
 ![screenshot](screenshot.png)
 
-# Installing basic packages
-First clone my repo.
-```
-git clone --depth 1 https://github.com/sujjanx/dotfiles
-```
-Now, you need to run the `install.sh` file to install the basic packages 
-you need to run my configuration smoothly.
-
-```bash
-./install.sh
-```
-
 # Setup libinput
 This section is the breakdown of the [archwiki](https://wiki.archlinux.org/title/Libinput)
 
@@ -88,27 +76,3 @@ pip install --user neovim
 # Polybar
 ## No glyphs shown
 You need to install __nerd fonts__ in order for glyphs to work properly.
-
-## Problem: Only one workspace in Polybar
-If your `polybar` displays only one or no workspace, Do the followings.
-In terminal do:
-
-```bash 
-xrandr | grep connected
-```
-Output might be `eDP1` or `eDP-1`.
-Edit the line in your `$HOME/.config/bspwm/bspwmrc` based on the output of 
-the command.
-
-```bash
-# $HOME/.config/bspwm/bspwmrc
-# ...
-$MONITOR= #eDP1 | #eDP-1
-bspc monitor $MONITOR -d 1 2 3 4 5 6 7 8 &
-# Here, I have 8 workspaces. You can change according to your needs.
-# ...
-```
-
-
-
-# Pacman Tips/Tricks
