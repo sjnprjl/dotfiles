@@ -1,0 +1,159 @@
+# terminal emulator
+super + Return
+    $TERMINAL
+
+#lockscreen
+super + l
+    betterlockscreen -l dimblur
+
+# screenshot
+super + s
+    flameshot gui
+
+
+# dmenu
+super + shift + space
+  dmenu-beautify
+
+
+#browser
+super + b
+    $BROWSER
+
+super + shift + p
+    pgrep picom && pkill picom || picom -b
+
+#libreoffice
+super + w
+    libreoffice
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
+
+#mute volume
+XF86AudioMute
+    volume-control mute
+
+#increase volume
+XF86AudioLowerVolume
+    volume-control down 1
+#decrease volem
+XF86AudioRaiseVolume
+    volume-control up 1
+    
+#brightness adjust
+XF86MonBrightnessDown
+    bright-control down 5
+XF86MonBrightnessUp
+    bright-control up 5
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+
+# close/kill
+super + shift + q
+	bspc node -k
+
+super + shift + w
+        really-wanna-quit
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# swap the current node and the biggest window
+super + g
+	bspc node -s biggest.window
+
+
+ ##focus the node in the given direction
+#super + {h,j,k,l}
+    #bspc node -f {west,south,north,east}
+
+# rotate windows
+super + shift + {h,t} 
+    bspc node @/ -C {forward, backward}
+
+# focus the next/previous window in the current desktop
+super + {_,shift + }Tab
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + ctrl + {grave,Tab}
+	bspc {node,desktop} -f last
+
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+# Toggle beetwen floating & tiled
+super + space
+    bspc node -t "~"{floating,tiled}
+
+ #preselect the direction
+super + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+
+# Move current window to a pre-selected space
+super + ctrl + m
+    bspc node -n last.!automatic
+
+## preselect the ratio
+super + ctrl + {1-9}
+    bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+    bspc node -p cancel
+
+## cancel the preselection for the focused desktop
+#super + ctrl + shift + space
+	#bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+##
+# move/resize
+#
+
+# Expanding windows
+super + control + {Left,Right,Up,Down}
+    bspc node -z {left -20 0,right 20 0,top 0 -20,bottom 0 20}
+
+## Shrinking windows
+super + alt + {Left,Right,Up,Down}
+    bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-100 0,0 100,0 -100,100 0}
+
+#themer
+super + t
+    themer
+
+# change desktop
+super + c
+    change-desktop
+
+# [unhide](focus) window
+super + f
+    focus-window
+
+# hide unhide window
+super + {shift, } + a
+    hide-unhide {--unhide,--hide}
+
+# adjust layer
+super + shift + {Up,Down}
+    bspc node -l {above,below}
+
