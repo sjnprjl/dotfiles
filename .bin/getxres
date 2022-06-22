@@ -1,0 +1,54 @@
+#!/bin/bash
+
+prog=$(basename $0)
+
+help() {
+cat <<- EOF
+$prog 	simple Xresources value extractor
+
+Usage: $prog [OPTION...] <VALUE> 
+
+OPTION
+	--include-hash -i 	Return hex-code with prefix with #
+	--no-hash -n		Return hex-code without #
+	--help -h 		Display this help
+EOF
+}
+
+get_value() {
+	echo -e $(xrdb -q | grep $1 | head -n1 | awk '{print $2}')
+}
+
+if [[ $# == 0 ]]; then
+	echo "Value is required."
+	help
+	exit 1
+fi
+
+include_hash() {
+	get_value $1
+}
+no_hash() {
+	echo $(get_value $1) | sed -e 's/#//g' 
+}
+
+
+
+case $1 in
+	--include-hash|-i)
+		include_hash $2
+		;;
+	--help|-h)
+		help
+		;;
+	--no-hash|-n)
+		no_hash $2
+		;;
+	*)
+		include_hash $1
+		;;
+esac
+
+
+
+

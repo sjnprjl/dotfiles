@@ -1,0 +1,12 @@
+#!/bin/bash
+# I dunno, but I really did create it. 
+current_node=$(bspc query -N -n)
+ask=$(echo -e "No\nNo\nNo\nYes" | dmenu -i -p "Really?")
+case "$ask" in
+  "Yes")
+    bspc node $current_node -c
+  ;;
+esac
+
+
+

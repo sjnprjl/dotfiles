@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+trap '' INT
+VERSION=1.2
+
+ver() {
+    echo [🚀] $VERSION
+    exit 0
+}
+bad() {
+    echo [🔥] Bad Command. 
+    help
+}
+
+help() {
+    cat << EOF
+Usage: ctc <file-name>
+
+REQUIRED: (xclip)
+With no file, read standard input. 
+
+    -h --help       Display this help and exit
+    -v --verision   Display the version of the script
+EOF
+exit 0
+}
+no_such_file() {
+    if [[ ! -f $1 ]]; then
+        echo "[🚨] No such file found."
+        exit 0
+    fi
+}
+from_stdin() {
+    trap 'echo' INT
+    in=$(cat)
+    echo "$in" | xclip -selection clipboard
+    echo -e "[✨] Copied to clipboard..."
+}
+
+from_file() {
+    cat $1 | xclip -selection clipboard
+    echo "[✨] Copied to clipboard from $1"
+}
+copy() {
+    if [[ ! -f $1 ]]; then
+        if [[ $1 == "" ]]; then
+            from_stdin
+        else
+            no_such_file
+        fi
+    else
+        from_file $1
+    fi
+    exit 0
+}
+
+if [[ ! -f "/usr/bin/xclip" ]];
+then 
+    echo "[🚨] xclip required.."
+    exit 0
+fi
+
+
+
+case $1 in
+    -h|--help)
+        help
+        ;;
+    -v|--version)
+        ver
+        ;;
+    --)
+        copy $2
+        ;;
+    -*|--*)
+        bad 
+        ;;
+    *)
+        copy $1
+        ;;
+esac
+

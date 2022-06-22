@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# dependency
+# xargs | xtitle | nl
+
+total_windows=( $(bspc query -N -n .window) )
+selected_window=${total_windows[(( $(bspc query -N -n .window | xargs -I{} xtitle {} | nl -w1 -s ' ' | dmenu -i -l 10 | cut -d" " -f1) - 1 ))]}
+bspc node $selected_window --flag hidden=off -f
+echo $selected_window
+
+

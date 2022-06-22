@@ -1,0 +1,8 @@
+#!/bin/bash
+# easy script to change desktop
+# Reason: I am lazy to move my fingers around 👅
+
+bspc desktop $(bspc query -D --names | dmenu -i) -f > /dev/null 2>&1
+[[ $? == 1 ]] && notify-send -t 2000 -u critical "Invalid desktop :("
+
+

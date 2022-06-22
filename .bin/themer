@@ -1,0 +1,58 @@
+#!/bin/bash
+# themer 
+# dependency: pywal
+
+
+open_original_script() {
+cat <<- EOF 
+#!/bin/bash
+feh $1
+EOF
+
+}
+
+
+
+SAVE_PATH="$HOME/.bg-mod.jpg"
+WALLPAPERS_DIR="$HOME/.wallpapers"
+IMG_COUNTER_FILE_PATH="$HOME/.cache/themer.cache"
+
+MAIN_DIR="$HOME/.config/themer"
+WAL_DIR="$HOME/.cache/wal"
+
+
+[[ ! -f $IMG_COUNTER_FILE_PATH ]] && echo 0 > $IMG_COUNTER_FILE_PATH
+
+total_walls=$(ls -1 $WALLPAPERS_DIR/* | wc -l)
+counter=$(cat $IMG_COUNTER_FILE_PATH)
+counter=$((counter%total_walls))
+counter=$((counter + 1))
+echo $counter > $IMG_COUNTER_FILE_PATH
+wallpaper="$(ls -1 $WALLPAPERS_DIR | head -n${counter} | tail -n1)"
+wallpaper_path=${WALLPAPERS_DIR}/$wallpaper
+
+sip --brightness 0.3 --blur 6 $wallpaper_path -o $SAVE_PATH
+
+open_original_script $wallpaper_path > .bg-ori
+
+feh --bg-scale $SAVE_PATH
+#
+DEFAULT_OPTION="-t -n -q -i $wallpaper_path"
+
+move_to_themer() {
+	cp "$WAL_DIR/$1" "$MAIN_DIR/$2"
+}
+
+make_themer() {
+	[[ ! -d $MAIN_DIR ]] && mkdir -p $MAIN_DIR
+	move_to_themer colors-kitty.conf kitty.conf
+	move_to_themer colors.Xresources Xresources
+	cp "$WAL_DIR/dunstrc" "$HOME/.config/dunst/dunstrc"
+	pkill dunst && dunst &
+}
+
+wal $DEFAULT_OPTION && make_themer
+echo $counter of $total_walls
+
+
+

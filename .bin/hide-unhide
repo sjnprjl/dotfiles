@@ -1,0 +1,51 @@
+#!/bin/bash
+hidden_windows=( $(bspc query -N -n .hidden.window) ) 
+option="${1:---hide}"
+prog="$(basename $0)"
+
+help() {
+cat <<- EOF
+General Syntax:
+  $prog [COMMANDS]
+  if COMMANDS is ommited, '--hide' is assumed. 
+Usage: 
+  $prog [--help | --hide | --unhide]
+
+COMMANDS
+      --hide    Hide the focused window
+      --unhide  Displays hidden windows
+      --help    Displays help
+
+EOF
+}
+
+hide() {
+  bspc node -g hidden=on
+}
+
+unhide() {
+  bspc node $1 -g hidden=off
+}
+
+display_hidden() {
+  selected_window=${hidden_windows[(( $(bspc query -N -n .hidden.window | xargs -I{} xtitle {} | nl -w1 -s ' ' | dmenu -i -l 10 | cut -d" " -f1) - 1 ))]}
+  unhide $selected_window
+}
+
+case "$option" in
+  --unhide)
+    display_hidden
+  ;;
+  --hide|'') 
+    hide
+  ;;
+  --help) 
+    help
+  ;;
+  *) 
+    echo -e "Invalid option\n"
+    help
+  ;;
+esac
+
+

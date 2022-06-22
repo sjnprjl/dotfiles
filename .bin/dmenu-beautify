@@ -1,0 +1,7 @@
+#!/bin/bash
+dmenu_run -p search \
+			-fn 'TerminessTTF Nerd Font-12' \
+			-nb "$(getxres background)" \
+			-nf "$(getxres foreground)" \
+			-sb "$(getxres color2)" \
+			-sf "$(getxres color15)"

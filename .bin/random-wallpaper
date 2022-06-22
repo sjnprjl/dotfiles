@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+wp_path=$HOME/.wallpapers
+wallpaper=$(shuf -n1 -e $wp_path/*)
+feh --bg-scale $wallpaper
+echo $wallpaper
