@@ -1,4 +1,5 @@
 # dotfiles
+> NOTE: you need pywal. Please get it install in your machine!
 ## Screenshot
 
 ![screenshot](screenshot.png)
