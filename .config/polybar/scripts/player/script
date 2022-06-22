@@ -1,0 +1,14 @@
+#!/bin/bash
+# dependency:
+#       playerctl
+
+playing_status="$(playerctl status)"
+playing_title="$(playerctl metadata | grep title  | cut -d\  -f3- | sed -e 's/^\s*//g')"
+
+PLAY_STATE="Playing"
+PAUSE_STATE="Paused"
+
+
+play_pause() {
+  playerctl play-pause
+}
