@@ -1,2 +1,0 @@
-#!/bin/bash
-scrot -s '/tmp/%F_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f && notify-send -t 5000 -i $f summary copied && rm -rf $f'

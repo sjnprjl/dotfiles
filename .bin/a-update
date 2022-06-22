@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-echo 'Updating Applications...'
-yay -Syu
-echo ' ' 
-echo 'Updating Complete!'

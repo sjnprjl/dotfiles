@@ -1,1 +1,0 @@
-source ~/.config/pfetch.conf
